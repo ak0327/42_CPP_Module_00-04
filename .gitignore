@@ -1,6 +1,7 @@
 !*.cpp
 !*.hpp
 !.gitignore
+!Makefile
 
 /cpp00/cmake-build-debug/
 .idea
