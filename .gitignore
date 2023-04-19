@@ -1,3 +1,5 @@
 /cpp00/cmake-build-debug/
 .idea
-
+*.txt
+!*.cpp
+!*.hpp
