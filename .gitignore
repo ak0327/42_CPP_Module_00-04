@@ -1,8 +1,13 @@
 *
 /**
+/**/.idea
+/**/cmake-build-debug
 
 !/cpp00/
-!/cpp00/**/
+!/cpp00/ex00/
+!/cpp00/ex01/
+!/cpp00/ex02/
+
 !/cpp01/
 !/cpp01/**/
 !/cpp02/
