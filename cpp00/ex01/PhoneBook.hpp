@@ -5,7 +5,7 @@
 
 #include "Contact.hpp"
 
-#define	MAXIMUM_SIZE		2
+#define	MAXIMUM_SIZE		8
 #define NUM_OF_INPUT		5
 #define FIRST_NAME_IDX		0
 #define LAST_NAME_IDX		1

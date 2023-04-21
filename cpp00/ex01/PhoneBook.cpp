@@ -4,9 +4,11 @@ static bool is_str_digit(const string &str);
 static void	display_header();
 static void display_row_delim();
 static string get_valid_width_string(const string &str);
+static string trim(string str);
 
 PhoneBook::PhoneBook() {
 	num_of_register = 0;
+	cout << "phonebook create" << endl;
 }
 
 void PhoneBook::add() {
@@ -27,6 +29,7 @@ void PhoneBook::add() {
 				cout << "^D" << endl;
 				exit (0);
 			}
+			string_arr[i] = trim(string_arr[i]);
 			if (string_arr[i] == "EXIT") {
 				cout << "# EXIT from ADD ..." << endl;
 				return;
@@ -185,4 +188,12 @@ static void	display_header() {
 	cout << " + -------- + -------- + -------- + -------- +" << endl;
 	cout << " |   Index  | FirstName| LastName | Nickname |" << endl;
 	cout << " # ======== # ======== # ======== # ======== #" << endl;
+}
+
+static string trim(string str) {
+	const string space = " ";
+
+	str.erase(str.find_last_not_of(space) + 1);
+	str.erase(0, str.find_first_not_of(space));
+	return (str);
 }
