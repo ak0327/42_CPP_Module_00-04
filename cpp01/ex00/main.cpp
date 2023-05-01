@@ -1,12 +1,12 @@
 #include "Zombie.hpp"
 
 int main() {
-	cout << "\n=== [zombie A] construct ===" << endl;
 	string nameA = "zombieA";
 	string nameB = "zombieB";
 	string nameC = "zombieC";
 	string nameD = "zombieD";
 
+	cout << "\n=== [zombie A] construct ===" << endl;
 	Zombie zombieA = Zombie(nameA);
 
 	zombieA.announce();
