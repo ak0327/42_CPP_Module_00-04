@@ -1,5 +1,6 @@
 #include "Account.hpp"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -75,8 +76,11 @@ void Account::displayStatus(void) const {
 
 }
 
-//[19920104_091532]
+// [19920104_091532]
+// [YYYYMMDD_HHMMSS]
 void Account::_displayTimestamp(void) {
-
+	std::time_t	*timeStamp;
+	std::localtime(timeStamp);
+	std::cout << std::put_time(timeS)
 }
 
