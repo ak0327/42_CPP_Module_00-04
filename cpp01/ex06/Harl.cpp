@@ -70,7 +70,7 @@ void Harl::filter(string level) {
 			warning();
 		case ERROR_IDX:
 			error();
-			break ;
+			return ;
 		default:
 			throw invalid_argument("[Error] Invalid argument. Input following Levels:"
 								   " DEBUG / INFO / WARNING / ERROR");

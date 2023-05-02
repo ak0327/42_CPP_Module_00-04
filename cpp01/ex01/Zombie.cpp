@@ -32,7 +32,7 @@ void Zombie::randomChump(string name) {
 
 Zombie *zombieHorde(int N, string name) {
 	if (N <= 0) {
-		throw invalid_argument("[Error] invalid argument: N <= 0\n");
+		throw invalid_argument("[Error] invalid argument: N <= 0");
 	}
 	Zombie *zombies = new Zombie[N];
 	for (int i=0; i<N; i++) {

@@ -20,5 +20,6 @@ int main(int argc, char **argv) {
 	catch (exception &e){
 		cerr << e.what() << endl;
 	}
+	system("leaks -q a.out");
 	return 0;
 }
