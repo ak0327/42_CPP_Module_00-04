@@ -3,10 +3,10 @@ NAME		= a.out
 CC			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRCS		= main.cpp
-#			  Weapon.cpp \
-#			  HumanA.cpp \
-#			  HumanB.cpp
+SRCS		= main.cpp \
+			  Weapon.cpp \
+			  HumanA.cpp \
+			  HumanB.cpp
 
 OBJ_DIR		= objs
 OBJ			= $(SRCS:%.cpp=%.o)
