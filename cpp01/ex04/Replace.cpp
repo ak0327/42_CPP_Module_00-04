@@ -11,11 +11,11 @@ void Replace::execReplace(const std::string &toBeReplaced,
 		return ;
 
 	string	line;
-	size_t	idx, size;
-	idx = 0;
-	size = 0;
+//	size_t	idx, size;
+//	idx = 0;
+//	size = 0;
 	cout << "execReplace" << endl;
-	cout << toBeReplaced << "->" << toBeReplaced << endl;
+	cout << toBeReplaced << "->" << toReplace << endl;
 
 	cout << "\ngetline(file)" << endl;
 	while (getline(file_.get_ifs(), line)) {
