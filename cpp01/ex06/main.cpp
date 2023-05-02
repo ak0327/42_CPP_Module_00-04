@@ -21,7 +21,6 @@ int main(int argc, char **argv) {
 		cerr << e.what() << endl;
 	}
 
-	cout << endl;
 	system("leaks -q harlFilter");
 	return 0;
 }
