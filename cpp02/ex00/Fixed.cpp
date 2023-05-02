@@ -19,22 +19,20 @@ Fixed::~Fixed() {
 	cout << COLOR_RED << "Destructor called" << COLOR_RESET << endl;
 }
 
-
 // copy constructor
 Fixed::Fixed(const Fixed &copyObj) {
 	cout << COLOR_MAGENTA << "Copy constructor called" << COLOR_RESET << endl;
-	setRawBits(copyObj.fixedPointNumber_);
+	setRawBits(copyObj.getRawBits());
 }
 
 // copyObj assignment operator overload
 Fixed &Fixed::operator=(const Fixed &copyObj) {
 	cout << COLOR_CYAN << "Copy assignment operator called" << COLOR_RESET << endl;
 	if (this != &copyObj) {
-		setRawBits(copyObj.fixedPointNumber_);
+		setRawBits(copyObj.getRawBits());
 	}
 	return *this;
 }
-
 
 int Fixed::getRawBits(void) const {
 	cout << COLOR_YELLOW << "getRawBits member function called, get:[" << fixedPointNumber_ << "]" << COLOR_RESET << endl;
@@ -42,6 +40,6 @@ int Fixed::getRawBits(void) const {
 }
 
 void Fixed::setRawBits(int const raw) {
-	cout << COLOR_BLUE << "setRawBits member function called, set[" << fixedPointNumber_ << "]->[" << raw << "]" << COLOR_RESET << endl;
+	cout << COLOR_BLUE << "setRawBits member function called, set:[" << raw << "]" << COLOR_RESET << endl;
 	fixedPointNumber_ = raw;
 }
