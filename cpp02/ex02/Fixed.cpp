@@ -8,96 +8,111 @@
 #define COLOR_CYAN		"\x1b[36m"
 #define COLOR_RESET		"\x1b[0m"
 
+//const int Fixed::fractionalBits_ = 8;
+
 // default constructor, initializes the fixed-point number value to 0
-Fixed::Fixed() {
-	fixedPointNumber_ = 0;
-}
+Fixed::Fixed() : fixedPointNumber_(0) {}
 
 // destructor
-Fixed::~Fixed() {
-}
+Fixed::~Fixed() {}
 
 // copy constructor
-Fixed::Fixed(const Fixed &obj) {
-	setRawBits(obj.getRawBits());
+Fixed::Fixed(Fixed const &obj) {
+//	*this = obj; // self-assignmentはNG
+//	this->setRawBits(obj.getRawBits());
+	this->fixedPointNumber_ = obj.fixedPointNumber_;
 }
 
 
 // obj assignment operator overload
-Fixed &Fixed::operator=(const Fixed &obj) {
+Fixed &Fixed::operator=(Fixed const &obj) {
 	if (this != &obj) {
-		setRawBits(obj.getRawBits());
+//		*this = obj;
+		this->fixedPointNumber_ = obj.fixedPointNumber_;
+//		this->setRawBits(obj.fixedPointNumber_);
 	}
 	return *this;
 }
 
 /* ex02 Additional func */
 // comparison operators
-bool Fixed::operator>(const Fixed &obj) {
-	return this->getRawBits() > obj.getRawBits();
+bool Fixed::operator>(Fixed const &obj) {
+	return this->fixedPointNumber_ > obj.fixedPointNumber_;
 }
 
-bool Fixed::operator<(const Fixed &obj) {
-	return this->getRawBits() < obj.getRawBits();
+bool Fixed::operator<(Fixed const &obj) {
+	return this->fixedPointNumber_ < obj.fixedPointNumber_;
 }
 
-bool Fixed::operator>=(const Fixed &obj) {
-	return this->getRawBits() >= obj.getRawBits();
+bool Fixed::operator>=(Fixed const &obj) {
+	return !(*this < obj);
 }
 
-bool Fixed::operator<=(const Fixed &obj) {
-	return this->getRawBits() <= obj.getRawBits();
+bool Fixed::operator<=(Fixed const &obj) {
+	return !(*this > obj);
 }
 
-bool Fixed::operator==(const Fixed &obj) {
-	return this->getRawBits() == obj.getRawBits();
+bool Fixed::operator==(Fixed const &obj) {
+	return this->fixedPointNumber_ == obj.fixedPointNumber_;
 }
 
-bool Fixed::operator!=(const Fixed &obj) {
-	return this->getRawBits() != obj.getRawBits();
+bool Fixed::operator!=(Fixed const &obj) {
+	return !(*this == obj);
 }
 
 
 /* ex02 Additional func */
 // arithmetic operators
-Fixed Fixed::operator+(const Fixed &obj) {
-	return Fixed(this->toFloat() + obj.toFloat());
+Fixed Fixed::operator+(Fixed const &obj) {
+	fixedPointNumber_ += obj.fixedPointNumber_;
+	return *this;
 }
 
-Fixed Fixed::operator-(const Fixed &obj) {
-	return Fixed(this->toFloat() - obj.toFloat());
+Fixed Fixed::operator-(Fixed const &obj) {
+	fixedPointNumber_ -= obj.fixedPointNumber_;
+	return *this;
 }
 
-Fixed Fixed::operator*(const Fixed &obj) {
-	return Fixed(this->toFloat() * obj.toFloat());
+Fixed Fixed::operator*(Fixed const &obj) {
+	fixedPointNumber_ =
+			static_cast<int>((
+					static_cast<long long>(fixedPointNumber_) * obj.fixedPointNumber_)
+					>> fractionalBits_);
+	return *this;
 }
 
-Fixed Fixed::operator/(const Fixed &obj) {
-	return Fixed(this->toFloat() / obj.toFloat());
+Fixed Fixed::operator/(Fixed const &obj) {
+	if (obj.fixedPointNumber_ == 0) {
+		throw runtime_error("Division by zero");
+	}
+	long long div = static_cast<long long>(fixedPointNumber_) << fractionalBits_;
+	fixedPointNumber_ = static_cast<int>(div / obj.fixedPointNumber_);
+	return *this;
 }
 
 /* ex02 Additional func */
 // pre-increment, pre-decrement operators
-Fixed Fixed::operator++() {
-	this->setRawBits(this->getRawBits() + 1);
+Fixed &Fixed::operator++() {
+	fixedPointNumber_++;
 	return *this;
 }
 
-Fixed Fixed::operator--() {
-	this->setRawBits(this->getRawBits() - 1);
+
+Fixed &Fixed::operator--() {
+	fixedPointNumber_--;
 	return *this;
 }
 
 // post-increment, post-decrement operators
 Fixed Fixed::operator++(int) {
 	Fixed tmp = *this;
-	this->setRawBits(this->getRawBits() + 1);
+	fixedPointNumber_++;
 	return tmp;
 }
 
 Fixed Fixed::operator--(int) {
-	Fixed tmp = *this;
-	this->setRawBits(this->getRawBits() - 1);
+	Fixed tmp(*this);
+	fixedPointNumber_--;
 	return tmp;
 }
 
@@ -105,25 +120,25 @@ Fixed Fixed::operator--(int) {
 // public overloaded member functions
 // A static member function min, returns a reference to the smallest one.
 // 1) takes as parameters two references on fixed-point numbers
-Fixed Fixed::min(Fixed &a, Fixed &b) {
-	return (a.getRawBits() < b.getRawBits()) ? a : b;
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+	return (a.getRawBits() <= b.getRawBits()) ? a : b;
 }
 
 // 2) takes as parameters two references to constant fixed-point numbers
-Fixed Fixed::min(const Fixed &a, const Fixed &b) {
-	return (a.getRawBits() < b.getRawBits()) ? a : b;
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+	return (a.getRawBits() <= b.getRawBits()) ? a : b;
 }
 
 
 // A static member function max, returns a reference to the greatest one.
 // 1) takes as parameters two references on fixed-point numbers
-Fixed Fixed::max(Fixed &a, Fixed &b) {
-	return !min(a, b);
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+	return (a.getRawBits() >= b.getRawBits()) ? a : b;
 }
 
 // 2) takes as parameters two references to constant fixed-point numbers
-Fixed Fixed::max(const Fixed &a, const Fixed &b) {
-	return !min(a, b);
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+	return (a.getRawBits() >= b.getRawBits()) ? a : b;
 }
 
 
@@ -141,13 +156,19 @@ void Fixed::setRawBits(int const raw) {
 // It converts it to the corresponding fixed-point value
 // The fractional bits value is initialized to 8 like in exercise 00.
 Fixed::Fixed(const int intNum) {
-	fixedPointNumber_ = intNum * (1 << fractionalBits_);
+	fixedPointNumber_ = intNum << fractionalBits_;
 }
 
 // It converts it to the corresponding fixed-point value
 // The fractional bits value is initialized to 8 like in exercise 00.
 Fixed::Fixed(const float floatNum) {
-	fixedPointNumber_ = static_cast<int>(floatNum * (1 << fractionalBits_));
+	if (isnan(floatNum)) {
+		throw invalid_argument("invalid argument : 'nan'");
+	}
+	else if (isinf(floatNum)) {
+		throw invalid_argument("invalid argument : 'inf'");
+	}
+	fixedPointNumber_ = static_cast<int>(roundf((floatNum * (1 << fractionalBits_))));
 }
 
 // converts the fixed-point value to a floating-point value.
@@ -157,7 +178,7 @@ float Fixed::toFloat() const {
 
 // converts the fixed-point value to an integer value.
 int Fixed::toInt() const {
-	return (fixedPointNumber_ / (1 << fractionalBits_));
+	return (fixedPointNumber_ >> fractionalBits_);
 }
 
 // inserts a floating-point representation of the fixed-point number

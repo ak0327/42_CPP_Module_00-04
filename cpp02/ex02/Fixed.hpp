@@ -11,7 +11,7 @@ public:
 	// destructor
 	~Fixed();
 	// copy constructor
-	Fixed(const Fixed &obj);
+	Fixed(Fixed const &obj);
 	// A constructor that takes a constant integer as a parameter.
 	Fixed(const int intNum);
 	// constructor that takes a constant floating-point number as a parameter.
@@ -19,28 +19,28 @@ public:
 
 	// copy assignment operator overload
 
-	Fixed &operator=(const Fixed &obj);
+	Fixed &operator=(Fixed const &obj);
 
 	/* ex02 Additional func */
 	// comparison operators
-	bool operator>(const Fixed &obj);
-	bool operator<(const Fixed &obj);
-	bool operator>=(const Fixed &obj);
-	bool operator<=(const Fixed &obj);
-	bool operator==(const Fixed &obj);
-	bool operator!=(const Fixed &obj);
+	bool operator>(Fixed const &obj);
+	bool operator<(Fixed const &obj);
+	bool operator>=(Fixed const &obj);
+	bool operator<=(Fixed const &obj);
+	bool operator==(Fixed const &obj);
+	bool operator!=(Fixed const &obj);
 
 	/* ex02 Additional func */
 	// arithmetic operators
-	Fixed operator+(const Fixed &obj);
-	Fixed operator-(const Fixed &obj);
-	Fixed operator*(const Fixed &obj);
-	Fixed operator/(const Fixed &obj);
+	Fixed operator+(Fixed const &obj);
+	Fixed operator-(Fixed const &obj);
+	Fixed operator*(Fixed const &obj);
+	Fixed operator/(Fixed const &obj);
 
 	/* ex02 Additional func */
 	// pre-increment, pre-decrement operators
-	Fixed operator++();
-	Fixed operator--();
+	Fixed &operator++();
+	Fixed &operator--();
 	// post-increment, post-decrement operators
 	Fixed operator++(int);
 	Fixed operator--(int);
@@ -49,17 +49,17 @@ public:
 	// public overloaded member functions
 	// A static member function min, returns a reference to the smallest one.
 	// 1) takes as parameters two references on fixed-point numbers
-	static Fixed min(Fixed &a, Fixed &b);
+	static Fixed &min(Fixed &a, Fixed &b);
 
 	// 2) takes as parameters two references to constant fixed-point numbers
-	static Fixed min(const Fixed &a, const Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
 
 	// A static member function max, returns a reference to the greatest one.
 	// 1) takes as parameters two references on fixed-point numbers
-	static Fixed max(Fixed &a, Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
 
 	// 2) takes as parameters two references to constant fixed-point numbers
-	static Fixed max(const Fixed &a, const Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
 
 
 	int		getRawBits(void) const;
@@ -75,7 +75,6 @@ private:
 
 };
 
-/* ex01 Additional func */
 // inserts a floating-point representation of the fixed-point number
 // into the output stream object passed as parameter.
 ostream &operator<<(ostream &out, const Fixed &obj);
