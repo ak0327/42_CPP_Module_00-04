@@ -6,7 +6,9 @@ public:
 	// construction and destruction messages must be different
 	FragTrap();
 	FragTrap(const string &name);
+	FragTrap(const FragTrap &fragTrap);
 	~FragTrap();
+	FragTrap &operator=(const FragTrap &fragTrap);
 
 	void highFiveGuys();
 };

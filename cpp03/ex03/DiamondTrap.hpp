@@ -1,11 +1,15 @@
 #pragma once
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class DiamondTrap : public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap{
 public:
 	DiamondTrap();
 	DiamondTrap(const string &name);
-
+	DiamondTrap(const DiamondTrap &diamondTrap);
+	~DiamondTrap();
+	DiamondTrap &operator=(const DiamondTrap &diamondTrap);
 
 	void whoAmI();
 

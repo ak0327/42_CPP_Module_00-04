@@ -12,8 +12,45 @@
 #define INIT_EP 100
 #define INIT_AD 30
 
+DiamondTrap::DiamondTrap() {
+	set_name(ClapTrap::get_name() + "_clap_name");
+	set_hp(FragTrap::get_hp());
+	set_ep(ScavTrap::get_ep());
+	set_ad(FragTrap::get_ad());
+	cout << COLOR_GREEN << "DiamondTrap default constructor called" << COLOR_RESET << endl;
+}
 
+DiamondTrap::DiamondTrap(const std::string &name) {
+	set_name(ClapTrap::get_name() + "_" + name);
+	set_hp(FragTrap::get_hp());
+	set_ep(ScavTrap::get_ep());
+	set_ad(FragTrap::get_ad());
+	cout << COLOR_GREEN << "DiamondTrap constructor called  name:" << name << COLOR_RESET << endl;
+}
 
+DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) {
+	if (this != &diamondTrap) {
+		*this = diamondTrap;
+	}
+}
+
+DiamondTrap::~DiamondTrap() {
+	cout << COLOR_RED << "DiamondTrap destructor called" << COLOR_RESET << endl;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
+	if (this != &diamondTrap) {
+		DiamondTrap tmp = DiamondTrap(diamondTrap);
+		set_name(tmp.get_name());
+		set_hp(tmp.get_hp());
+		set_ep(tmp.get_ep());
+		set_ad(tmp.get_ad());
+
+	}
+	return *this;
+}
+
+// This member function will display both its name and its ClapTrap name.
 void DiamondTrap::whoAmI() {
 
 }

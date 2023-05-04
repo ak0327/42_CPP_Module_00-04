@@ -1,35 +1,56 @@
 #include <iostream>
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 using namespace std;
 
 int main() {
 	{
-		FragTrap fragTrap = FragTrap("Alpha"); fragTrap.printStatus();
+		DiamondTrap diamond = DiamondTrap("Alpha"); diamond.printStatus();
 
-		fragTrap.attack("Beta"); fragTrap.printStatus();
-		fragTrap.highFiveGuys();
-		fragTrap.takeDamage(50);	fragTrap.printStatus();
-		fragTrap.beRepaired(5); fragTrap.printStatus();
-		fragTrap.takeDamage(50);	fragTrap.printStatus();
-		fragTrap.takeDamage(150); fragTrap.printStatus();
-		fragTrap.beRepaired(100); fragTrap.printStatus();
-		fragTrap.attack("Omega");	fragTrap.printStatus();
-		fragTrap.takeDamage(100); fragTrap.printStatus();
-		fragTrap.highFiveGuys();
+		diamond.takeDamage(50);	diamond.printStatus();
+		diamond.beRepaired(5); diamond.printStatus();
+		diamond.takeDamage(50);	diamond.printStatus();
+		diamond.takeDamage(150); diamond.printStatus();
+		diamond.beRepaired(100); diamond.printStatus();
+		diamond.takeDamage(100); diamond.printStatus();
 		cout << endl;
 	}
 	{
-		FragTrap fragTrap = FragTrap("Beta"); fragTrap.printStatus();
+		DiamondTrap diamond = DiamondTrap("Beta"); diamond.printStatus();
 
-		fragTrap.highFiveGuys();
+		diamond.highFiveGuys();
 		for (int i=0; i<99; i++) {
-			fragTrap.beRepaired(10);
+			diamond.beRepaired(10);
 		}
-		fragTrap.printStatus();
-		fragTrap.highFiveGuys();
-		fragTrap.beRepaired(5); fragTrap.printStatus();
-		fragTrap.highFiveGuys();
+		diamond.printStatus();
+		diamond.beRepaired(5); diamond.printStatus();
+		cout << endl;
+	}
+	{
+		DiamondTrap foo = DiamondTrap("Foo");
+		DiamondTrap bar = DiamondTrap("Bar");
+		foo.printStatus();
+		bar.beRepaired(5);
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		bar.attack_on(foo);
 		cout << endl;
 	}
 //	system("leaks a.out");

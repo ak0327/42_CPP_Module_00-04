@@ -29,10 +29,27 @@ ScavTrap::ScavTrap(const string &name) {
 	cout << COLOR_GREEN << "ScavTrap constructor called  name:" << name << COLOR_RESET << endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
+	if (this != &scavTrap) {
+		*this = scavTrap;
+	}
+}
+
 ScavTrap::~ScavTrap() {
 	cout << COLOR_RED << "ScavTrap destructor called" << COLOR_RESET << endl;
 }
 
+ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap) {
+	if (this != &scavTrap) {
+		ScavTrap tmp = ScavTrap(scavTrap);
+		set_name(tmp.get_name());
+		set_hp(tmp.get_hp());
+		set_ep(tmp.get_ep());
+		set_ad(tmp.get_ad());
+
+	}
+	return *this;
+}
 
 void ScavTrap::attack_on(ScavTrap &targetObj) {
 	if (this == &targetObj) {

@@ -28,8 +28,25 @@ FragTrap::FragTrap(const string &name) {
 	cout << COLOR_GREEN << "FragTrap constructor called  name:" << name << COLOR_RESET << endl;
 }
 
+FragTrap::FragTrap(const FragTrap &fragTrap) {
+	if (this != &fragTrap) {
+		*this = fragTrap;
+	}
+}
+
 FragTrap::~FragTrap() {
 	cout << COLOR_RED << "FragTrap destructor called" << COLOR_RESET << endl;
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &fragTrap) {
+	if (this != &fragTrap) {
+		FragTrap tmp = FragTrap(fragTrap);
+		set_name(tmp.get_name());
+		set_hp(tmp.get_hp());
+		set_ep(tmp.get_ep());
+		set_ad(tmp.get_ad());
+	}
+	return *this;
 }
 
 void FragTrap::highFiveGuys() {
