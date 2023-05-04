@@ -6,8 +6,6 @@ Point::Point(const Fixed x, const Fixed y) : x_(x), y_(y) {}
 
 Point::Point(const Point &point) : x_(point.x_), y_(point.y_) {}
 
-Point::Point(float x, float y) : x_(Fixed(x)), y_(Fixed(y)) {}
-
 Point &Point::operator=(Point const &point) {
 	if (this != &point) {
 		const_cast<Fixed &>(x_) = point.get_x();

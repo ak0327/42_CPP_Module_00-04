@@ -11,8 +11,6 @@ public:
 	// initializes x and y with those parameters.
 	Point(Fixed const x, Fixed const y);
 
-	Point(float x, float y);
-
 	// destructor
 	~Point();
 
