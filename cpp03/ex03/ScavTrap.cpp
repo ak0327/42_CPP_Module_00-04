@@ -13,7 +13,7 @@
 #define INIT_AD 20
 
 ScavTrap::ScavTrap() {
-	set_name("null");
+	set_name("ScavTrap");
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);

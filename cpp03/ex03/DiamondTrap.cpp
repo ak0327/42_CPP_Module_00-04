@@ -1,4 +1,7 @@
 #include "DiamondTrap.hpp"
+#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 #define COLOR_RED		"\x1b[31m"
 #define COLOR_GREEN		"\x1b[32m"
@@ -13,7 +16,7 @@
 #define INIT_AD 30
 
 DiamondTrap::DiamondTrap() {
-	set_name(ClapTrap::get_name() + "_clap_name");
+	set_name("DiamondTrap");
 	set_hp(FragTrap::get_hp());
 	set_ep(ScavTrap::get_ep());
 	set_ad(FragTrap::get_ad());
@@ -21,7 +24,8 @@ DiamondTrap::DiamondTrap() {
 }
 
 DiamondTrap::DiamondTrap(const std::string &name) {
-	set_name(ClapTrap::get_name() + "_" + name);
+	name_ = name;
+	ClapTrap::set_name(name + "_clap_name");
 	set_hp(FragTrap::get_hp());
 	set_ep(ScavTrap::get_ep());
 	set_ad(FragTrap::get_ad());
@@ -52,5 +56,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
 
 // This member function will display both its name and its ClapTrap name.
 void DiamondTrap::whoAmI() {
-
+	cout << COLOR_MAGENTA <<
+	"[WhoAmI] name:" << name_ <<
+	", ClapTrap name:" << ClapTrap::get_name() <<
+	COLOR_RESET << endl;
 }
