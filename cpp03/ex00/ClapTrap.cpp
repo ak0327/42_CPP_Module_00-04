@@ -106,7 +106,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	" be repaired " << amount << COLOR_RESET << endl;
 }
 
-void ClapTrap::set_name(string &name) { name_ = name; }
+void ClapTrap::set_name(const string &name) { name_ = name; }
 void ClapTrap::set_hp(unsigned int update) { hit_point_ = update; }
 void ClapTrap::set_ep(unsigned int update) { energy_point_ = update; }
 void ClapTrap::set_ad(unsigned int update) { attack_damage_ = update; }

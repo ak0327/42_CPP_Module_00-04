@@ -9,10 +9,7 @@ int main() {
 	{
 		ScavTrap scavTrap = ScavTrap("Dog"); scavTrap.printStatus();
 
-		scavTrap.attack("Cat"); scavTrap.printStatus();
 		scavTrap.takeDamage(50);	scavTrap.printStatus();
-		scavTrap.guardGate();
-		scavTrap.beRepaired(5); scavTrap.printStatus();
 		scavTrap.guardGate();
 		scavTrap.takeDamage(50);	scavTrap.printStatus();
 		scavTrap.guardGate();
@@ -21,26 +18,81 @@ int main() {
 
 		// can't action
 		scavTrap.beRepaired(100); scavTrap.printStatus();
-		scavTrap.attack("Human");	scavTrap.printStatus();
 		scavTrap.takeDamage(100); scavTrap.printStatus();
 		cout << endl;
 	}
 	{
 		ScavTrap scavTrap = ScavTrap("Lion"); scavTrap.printStatus();
 
-		scavTrap.attack("Tiger"); scavTrap.printStatus();
 		for (int i=0; i<50; i++) {
 			scavTrap.beRepaired(5); scavTrap.printStatus();
 		}
-		scavTrap.takeDamage(50);	scavTrap.printStatus();
 		scavTrap.guardGate();
-		scavTrap.takeDamage(50);	scavTrap.printStatus();
+		scavTrap.takeDamage(340); scavTrap.printStatus();
 		scavTrap.guardGate();
-		scavTrap.takeDamage(150); scavTrap.printStatus();
+		scavTrap.takeDamage(10); scavTrap.printStatus();
 		scavTrap.guardGate();
 		scavTrap.beRepaired(100); scavTrap.printStatus();
-		scavTrap.attack("Human");	scavTrap.printStatus();
 		scavTrap.takeDamage(100); scavTrap.printStatus();
+		cout << endl;
+	}
+	{
+		ScavTrap foo = ScavTrap("Foo");
+		ScavTrap bar = ScavTrap("Bar");
+		foo.printStatus();
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		bar.attack_on(foo);
+		foo.printStatus();
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		bar.attack_on(foo);
+		cout << endl;
+	}
+	{
+		ScavTrap foo = ScavTrap("Foo");
+		ScavTrap bar = ScavTrap("Bar");
+		foo.printStatus();
+		foo.guardGate();
+		bar.beRepaired(5);
+		bar.printStatus();
+		bar.guardGate();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.guardGate();
+		bar.printStatus();
+		bar.guardGate();
+
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.guardGate();
+		bar.printStatus();
+		bar.guardGate();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.guardGate();
+		bar.printStatus();
+		bar.guardGate();
+
+		bar.attack_on(foo);
 		cout << endl;
 	}
 //	system("leaks a.out");

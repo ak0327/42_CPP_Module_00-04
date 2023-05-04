@@ -22,7 +22,7 @@ public:
 	void attack_on(ClapTrap &targetObj);
 
 	// setter
-	void set_name(string &name);
+	void set_name(const string &name);
 	void set_hp(unsigned int update);
 	void set_ep(unsigned int update);
 	void set_ad(unsigned int update);

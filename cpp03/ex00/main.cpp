@@ -9,15 +9,12 @@ int main() {
 		ClapTrap clapTrap = ClapTrap("Hoge");
 		clapTrap.printStatus();
 
-		clapTrap.attack("huga"); clapTrap.printStatus();
-		clapTrap.attack("huga");	clapTrap.printStatus();
 		clapTrap.takeDamage(5);	clapTrap.printStatus();
 		clapTrap.beRepaired(5);	clapTrap.printStatus();
 		clapTrap.takeDamage(15);	clapTrap.printStatus();
 
 		// can't action
 		clapTrap.beRepaired(5);	clapTrap.printStatus();
-		clapTrap.attack("huga");	clapTrap.printStatus();
 		clapTrap.takeDamage(15);	clapTrap.printStatus();
 		cout << endl;
 	}
@@ -59,7 +56,7 @@ int main() {
 		clapTrap.beRepaired(100); clapTrap.printStatus();
 
 		clapTrap.takeDamage(100);	clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
+		clapTrap.beRepaired(100); clapTrap.printStatus();
 		cout << endl;
 	}
 	{
@@ -98,10 +95,8 @@ int main() {
 		clapTrap.takeDamage(0);	clapTrap.printStatus();
 		clapTrap.takeDamage(0);	clapTrap.printStatus();
 		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
 		clapTrap.takeDamage(1000);	clapTrap.printStatus();
 		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
 		cout << endl;
 	}
 	{
@@ -126,7 +121,7 @@ int main() {
 		clapTrap.beRepaired(0); clapTrap.printStatus();
 		clapTrap.beRepaired(0); clapTrap.printStatus();
 		clapTrap.takeDamage(10);	clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
+		clapTrap.beRepaired(0); clapTrap.printStatus();
 		cout << endl;
 	}
 	{
