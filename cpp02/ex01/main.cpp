@@ -6,32 +6,49 @@ using namespace std;
 int main() {
 	cout.precision(10);
 	{
-		cout << "\nFixed a:" << endl;
 		Fixed a;
-
-		cout << "\nFixed const b(10):" << endl;
 		Fixed const b(10);
-
 		// 42.42 * (1<<8) = 10859.52 -> 10859
 		// toFloat = 10859 / (1<<8) = 42.41796875
-		cout << "\nFixed const c(42.42f):" << endl;
 		Fixed const c(42.42f);
-
-		cout << "\nFixed const d(b):" << endl;
 		Fixed const d(b);
-
 		// 1234.4321 * (1<<8) = 316014.6176 -> 316014
 		// toFloat = 316014 / (1<<8) = 1234.4296875
-		cout << "\na = Fixed(1234.4321f):" << endl;
 		a = Fixed(1234.4321f);
+
+		cout << "Fixed a = Fixed(1234.4321f) = " << a << endl;
+		cout << "Fixed const b(10)           = " << b << endl;
+
+		cout << "Fixed const c(42.42f)       = " << c << endl;
+		cout << "Fixed const d(b)            = " << d << endl;
 
 		cout << endl;
 
-		cout << "a is " << a << endl;
-		cout << "b is " << b << endl;
+		cout << "a is " << a.toInt() << " as integer" << endl;
+		cout << "b is " << b.toInt() << " as integer" << endl;
+		cout << "c is " << c.toInt() << " as integer" << endl;
+		cout << "d is " << d.toInt() << " as integer" << endl;
 
-		cout << "c is " << c << endl;
-		cout << "d is " << d << endl;
+		cout << endl;
+
+		cout << "a is " << a.toFloat() << " as float" << endl;
+		cout << "b is " << b.toFloat() << " as float" << endl;
+		cout << "c is " << c.toFloat() << " as float" << endl;
+		cout << "d is " << d.toFloat() << " as float" << endl;
+		cout << endl;
+	}
+	{
+		Fixed a;
+		Fixed const b(-10);
+		Fixed const c(-42.42f);
+		Fixed const d(b);
+		a = Fixed(-1234.4321f);
+
+		cout << "Fixed a = Fixed(-1234.4321f) = " << a << endl;
+		cout << "Fixed const b(-10)           = " << b << endl;
+
+		cout << "Fixed const c(-42.42f)       = " << c << endl;
+		cout << "Fixed const d(b)             = " << d << endl;
 
 		cout << endl;
 
@@ -61,6 +78,7 @@ int main() {
 		Fixed const b4(-100.00f);
 		Fixed const b5(INT_MIN/256);
 		Fixed const b6(INT_MIN);
+		Fixed const b7(-1234.56789f);
 		cout << endl;
 		cout << "a1(0)           = " << a1 << endl;
 		cout << "a2(100)         = " << a2 << endl;
@@ -75,11 +93,22 @@ int main() {
 		cout << "b4(-100.00f)    = " << b4 << endl;
 		cout << "b5(INT_MIN/256) = " << b5 << endl;
 		cout << "b6(INT_MIN)     = " << b6 << endl;
-		cout << endl;
-		cout << "INT_MAX/256     = " << INT_MAX/256 << endl;
-		cout << "INT_MIN/256     = " << INT_MIN/256 << endl;
+		cout << "b7(-1234.56789f)= " << b7 << endl;
 		cout << endl;
 	}
+	{
+		Fixed a;
+		a.setRawBits(INT_MAX);
+		cout << a << endl;
+		ctou << endl:
+	}
+	cout << "INT_MAX/256     = " << INT_MAX/256 << endl;
+	cout << "INT_MIN/256     = " << INT_MIN/256 << endl;
+	cout << "roundf(123.12f) = " << roundf(123.12f) << endl;
+	cout << "roundf(123.67f) = " << roundf(123.67f) << endl;
+	cout << "roundf(-123.12f)= " << roundf(-123.12f) << endl;
+	cout << "roundf(-123.67f)= " << roundf(-123.67f) << endl;
+	cout << endl;
 
 //	system("leaks a.out");
 	return 0;

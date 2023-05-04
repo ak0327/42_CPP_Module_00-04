@@ -9,40 +9,36 @@
 #define COLOR_RESET		"\x1b[0m"
 
 // default constructor, initializes the fixed-point number value to 0
-Fixed::Fixed() {
-	cout << COLOR_GREEN << "Default constructor called, set:[" << fixedPointNumber_ << "]" << COLOR_RESET << endl;
-	fixedPointNumber_ = 0;
-}
+Fixed::Fixed() : fixedPointNumber_(0) {}
 
 // destructor
-Fixed::~Fixed() {
-	cout << COLOR_RED << "Destructor called" << COLOR_RESET << endl;
-}
+Fixed::~Fixed() {}
 
 // copy constructor
-Fixed::Fixed(const Fixed &obj) {
-	cout << COLOR_MAGENTA << "Copy constructor called" << COLOR_RESET << endl;
-	setRawBits(obj.getRawBits());
+Fixed::Fixed(Fixed const &obj) {
+//	*this = obj; // self-assignmentはNG
+//	this->setRawBits(obj.getRawBits());
+	this->fixedPointNumber_ = obj.getRawBits();
 }
 
+
 // obj assignment operator overload
-Fixed &Fixed::operator=(const Fixed &obj) {
-	cout << COLOR_CYAN << "Copy assignment operator called" << COLOR_RESET << endl;
+Fixed &Fixed::operator=(Fixed const &obj) {
 	if (this != &obj) {
-		setRawBits(obj.getRawBits());
+//		*this = obj;
+		this->fixedPointNumber_ = obj.getRawBits();
+//		this->setRawBits(obj.getRawBits());
 	}
 	return *this;
 }
 
 // returns the raw value of the fixed-point value.
 int Fixed::getRawBits(void) const {
-	cout << COLOR_YELLOW << "getRawBits member function called, get:[" << fixedPointNumber_ << "]" << COLOR_RESET << endl;
 	return (fixedPointNumber_);
 }
 
 // sets the raw value of the fixed-point number.
 void Fixed::setRawBits(int const raw) {
-	cout << COLOR_BLUE << "setRawBits member function called, set:[" << raw << "]" << COLOR_RESET << endl;
 	fixedPointNumber_ = raw;
 }
 
@@ -50,28 +46,26 @@ void Fixed::setRawBits(int const raw) {
 // It converts it to the corresponding fixed-point value
 // The fractional bits value is initialized to 8 like in exercise 00.
 Fixed::Fixed(const int intNum) {
-	cout << COLOR_GREEN << "Int constructor called" << COLOR_RESET << endl;
-	fixedPointNumber_ = intNum * (1 << fractionalBits_);
+	fixedPointNumber_ = intNum << fractionalBits_;
 }
 
 /* ex01 Additional func */
 // It converts it to the corresponding fixed-point value
 // The fractional bits value is initialized to 8 like in exercise 00.
 Fixed::Fixed(const float floatNum) {
-	cout << COLOR_YELLOW << "Float constructor called" << COLOR_RESET << endl;
-	fixedPointNumber_ = static_cast<int>(floatNum * (1 << fractionalBits_));
+	fixedPointNumber_ = (int)(floatNum * (1 << fractionalBits_));
 }
 
 /* ex01 Additional func */
 // converts the fixed-point value to a floating-point value.
 float Fixed::toFloat() const {
-	return (static_cast<float>(fixedPointNumber_) / (1 << fractionalBits_));
+	return ((float)(fixedPointNumber_) / (1 << fractionalBits_));
 }
 
 /* ex01 Additional func */
 // converts the fixed-point value to an integer value.
 int Fixed::toInt() const {
-	return (fixedPointNumber_ / (1 << fractionalBits_));
+	return (fixedPointNumber_ >> fractionalBits_);
 }
 
 /* ex01 Additional func */

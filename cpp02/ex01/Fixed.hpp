@@ -11,7 +11,7 @@ public:
 	// destructor
 	~Fixed();
 	// copy constructor
-	Fixed(const Fixed &obj);
+	Fixed(Fixed const &obj);
 
 
 	/* ex01 Additional func */
@@ -23,7 +23,7 @@ public:
 	Fixed(const float floatNum);
 
 	// copy assignment operator overload
-	Fixed &operator=(const Fixed &obj);
+	Fixed &operator=(Fixed const &obj);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
