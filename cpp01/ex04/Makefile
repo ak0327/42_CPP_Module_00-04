@@ -4,7 +4,7 @@ CC			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRCS		= main.cpp \
-			  File.cpp \
+			  FileHandler.cpp \
               Replace.cpp
 
 OBJ_DIR		= objs

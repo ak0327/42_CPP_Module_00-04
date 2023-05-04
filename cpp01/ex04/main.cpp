@@ -1,7 +1,8 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 
-#include "File.hpp"
+#include "FileHandler.hpp"
 #include "Replace.hpp"
 
 using namespace std;
@@ -78,9 +79,9 @@ int main(int argc, char **argv) {
 	try {
 		check_argc(argc);
 //		string filename = argv[1];
-//		File file = File(filename);
+//		FileHandler file = FileHandler(filename);
 //		Replace replace = Replace(file);
-//		replace.execReplace(argv[2], argv[3]);
+//		replace.execReplace(file, argv[2], argv[3]);
 
 		string filename = argv[1];
 		string outputFileName = filename + ".replace";;
@@ -101,18 +102,16 @@ int main(int argc, char **argv) {
 		}
 
 		string	line, content;
+		string replaced;
 
 		// todo: string + '\n'
-		char c;
-		content = "";
-		while (ifs.get(c))
-		{
-			content += c;
-		}
-		if (!content.empty()) {
-			line = get_replaced_line(content, toBeReplaced, toReplace);
-			if (!line.empty()) {
-				ofs << line;
+		while (getline(ifs, content)) {
+			if (!ifs.eof()) {
+				content += "\n";
+			}
+			replaced = get_replaced_line(content, toBeReplaced, toReplace);
+			if (!replaced.empty()) {
+				ofs << replaced;
 			}
 		}
 
