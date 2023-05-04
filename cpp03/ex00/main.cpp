@@ -69,6 +69,9 @@ int main() {
 		clapTrap.beRepaired(1); clapTrap.printStatus();
 		clapTrap.beRepaired(1); clapTrap.printStatus();
 		clapTrap.beRepaired(1); clapTrap.printStatus();
+		clapTrap.beRepaired(1); clapTrap.printStatus();
+		clapTrap.beRepaired(1); clapTrap.printStatus();
+		clapTrap.beRepaired(1); clapTrap.printStatus();
 		clapTrap.takeDamage(UINT_MAX);	clapTrap.printStatus();
 		cout << endl;
 	}
@@ -128,6 +131,22 @@ int main() {
 
 		cout << endl;
 	}
-//	system("leaks a.out");
+	{
+		ClapTrap foo = ClapTrap("Foo");
+		ClapTrap bar = ClapTrap("Bar");
+		foo.printStatus();
+		bar.printStatus();
+
+		foo.attack_on(bar);
+		foo.printStatus();
+		bar.printStatus();
+
+		bar.attack_on(foo);
+		foo.printStatus();
+		bar.printStatus();
+
+	}
+
+	//	system("leaks a.out");
 	return 0;
 }
