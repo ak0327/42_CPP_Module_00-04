@@ -7,14 +7,12 @@ int main() {
 	{
 		FragTrap fragTrap = FragTrap("Alpha"); fragTrap.printStatus();
 
-		fragTrap.attack("Beta"); fragTrap.printStatus();
 		fragTrap.highFiveGuys();
 		fragTrap.takeDamage(50);	fragTrap.printStatus();
 		fragTrap.beRepaired(5); fragTrap.printStatus();
 		fragTrap.takeDamage(50);	fragTrap.printStatus();
 		fragTrap.takeDamage(150); fragTrap.printStatus();
 		fragTrap.beRepaired(100); fragTrap.printStatus();
-		fragTrap.attack("Omega");	fragTrap.printStatus();
 		fragTrap.takeDamage(100); fragTrap.printStatus();
 		fragTrap.highFiveGuys();
 		cout << endl;
@@ -30,6 +28,41 @@ int main() {
 		fragTrap.highFiveGuys();
 		fragTrap.beRepaired(5); fragTrap.printStatus();
 		fragTrap.highFiveGuys();
+		cout << endl;
+	}
+	{
+		FragTrap foo = FragTrap("Foo");
+		FragTrap bar = FragTrap("Bar");
+		foo.printStatus();
+		foo.highFiveGuys();
+		bar.beRepaired(5);
+		bar.printStatus();
+		bar.highFiveGuys();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.highFiveGuys();
+		bar.printStatus();
+		bar.highFiveGuys();
+
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.highFiveGuys();
+		bar.printStatus();
+		bar.highFiveGuys();
+
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.attack_on(bar);
+		foo.printStatus();
+		foo.highFiveGuys();
+		bar.printStatus();
+		bar.highFiveGuys();
+
+		bar.attack_on(foo);
 		cout << endl;
 	}
 //	system("leaks a.out");

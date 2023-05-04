@@ -33,12 +33,12 @@ FragTrap::~FragTrap() {
 }
 
 void FragTrap::highFiveGuys() {
-	if (is_action_available()) {
-		cout << COLOR_GREEN << "(*´ω`)人(´ω`*)" << COLOR_RESET << endl;
+	if (is_actionable()) {
+		cout << COLOR_GREEN << "[" << get_name() << "] (*´ω`)人(´ω`*)" << COLOR_RESET << endl;
 	} else if (get_hp() == 0) {
-		cout << COLOR_RED << "_(´ཀ`」 ∠)_" << COLOR_RESET << endl;
+		cout << COLOR_RED << "[" << get_name() << "] _(´ཀ`」 ∠)_" << COLOR_RESET << endl;
 	}
 	else {
-		cout << COLOR_BLUE << "｡ﾟ･（>Д<）･ﾟ｡" << COLOR_RESET << endl;
+		cout << COLOR_BLUE << "[" << get_name() << "] ｡ﾟ･（>Д<）･ﾟ｡" << COLOR_RESET << endl;
 	}
 }

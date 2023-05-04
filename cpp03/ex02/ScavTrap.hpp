@@ -15,5 +15,8 @@ public:
 	~ScavTrap();
 	void attack(const string &target);
 
+	void attack_on(ScavTrap &targetObj);
+
+
 	void guardGate();
 };
