@@ -2,7 +2,6 @@
 
 #include <string>
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
@@ -11,14 +10,16 @@ public:
 	ClapTrap();
 	ClapTrap(const string &name);
 	ClapTrap(const ClapTrap &clapTrap);
-	virtual ~ClapTrap();
+	~ClapTrap();
 
 	ClapTrap &operator=(const ClapTrap &clapTrap);
 
 	// functions on subject
-	virtual void attack(const string &target);
+	void attack(const string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+
+	void attack_on(ClapTrap &targetObj);
 
 	// setter
 	void set_name(const string &name);
@@ -34,11 +35,11 @@ public:
 
 	// helper
 	void printStatus();
-	bool is_action_available();
+	bool is_actionable();
 	unsigned int calc_consume_point(unsigned int val, unsigned int minus);
 	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
 
-protected:
+private:
 	string name_;
 	unsigned int hit_point_;
 	unsigned int energy_point_;

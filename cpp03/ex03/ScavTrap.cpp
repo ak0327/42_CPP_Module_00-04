@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
 #define COLOR_RED		"\x1b[31m"
 #define COLOR_GREEN		"\x1b[32m"
@@ -13,7 +14,7 @@
 #define INIT_AD 20
 
 ScavTrap::ScavTrap() {
-	set_name("ScavTrap");
+	set_name("null");
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
@@ -32,17 +33,41 @@ ScavTrap::~ScavTrap() {
 	cout << COLOR_RED << "ScavTrap destructor called" << COLOR_RESET << endl;
 }
 
-void ScavTrap::attack(const string &target) {
-	// check hp
-	if (!is_action_available()) {
-		cout << COLOR_YELLOW << "ScavTrap [attack] " << get_name() << " can't action..." << COLOR_RESET << endl;
+
+void ScavTrap::attack_on(ScavTrap &targetObj) {
+	if (this == &targetObj) {
 		return ;
 	}
-	// ep--
-	set_ep(calc_consume_point(get_ep(), 1));
+	if (targetObj.get_hp() == 0) {
+		cout << COLOR_YELLOW <<
+			 "ScavTrap [attack] " << targetObj.get_name() <<
+			 " is already ZERO hit point" << COLOR_RESET << endl;
+		return ;
+	}
+	// for subject, print message
+	attack(targetObj.get_name());
 
-	// target hp-=ap :: next ex?
-	cout << COLOR_YELLOW << "ScavTrap [attack] " << get_name() << " attacks " << target << ", causing " << get_ad() << " points of damage!" << COLOR_RESET << endl;
+	// check actionable
+	if (is_actionable()) {
+		// ep--
+		set_ep(calc_consume_point(get_ep(), 1));
+		// targetObj.hp -= ad
+		targetObj.set_hp(calc_consume_point(targetObj.get_hp(), get_ad()));
+	}
+}
+
+void ScavTrap::attack(const std::string &target) {
+	// check hp
+	if (!is_actionable()) {
+		cout << COLOR_YELLOW <<
+			 "ScavTrap [attack] " << get_name() <<
+			 " can't action..." << COLOR_RESET << endl;
+	} else {
+		cout << COLOR_YELLOW <<
+			 "ScavTrap [attack] " << get_name() <<
+			 " attacks " << target << ", causing " <<
+			 get_ad() << " points of damage!" << COLOR_RESET << endl;
+	}
 }
 
 // HP == 0        : DIED
@@ -57,5 +82,5 @@ void ScavTrap::guardGate() {
 	} else {
 		status = COLOR_CYAN "GOOD" COLOR_RESET;
 	}
-	cout << "Scav Trap [guardGate] " << status << endl;
+	cout << "[" << get_name() << "'s guardGate] " << status << endl;
 }
