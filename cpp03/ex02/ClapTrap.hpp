@@ -36,6 +36,7 @@ public:
 	void printStatus();
 	bool is_action_available();
 	unsigned int calc_consume_point(unsigned int val, unsigned int minus);
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
 
 protected:
 	string name_;

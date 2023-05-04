@@ -56,9 +56,9 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << " can't action..."  << COLOR_RESET << endl;
 		return ;
 	}
-	set_hp(get_hp() + amount);
+	set_hp(calc_repair_hp(get_hp(), amount));
 	set_ep(calc_consume_point(get_ep(), 1));
-	cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << "be repaired " << amount << COLOR_RESET << endl;
+	cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << " be repaired " << amount << COLOR_RESET << endl;
 }
 
 
@@ -78,6 +78,12 @@ unsigned int ClapTrap::calc_consume_point(unsigned int val,
 		return (val - minus);
 	}
 	return (0);
+}
+
+unsigned int ClapTrap::calc_repair_hp(unsigned int hp, unsigned int repair) {
+	if (UINT_MAX - hp >= repair)
+		return (hp + repair);
+	return (UINT_MAX); // todo
 }
 
 void ClapTrap::printStatus() {

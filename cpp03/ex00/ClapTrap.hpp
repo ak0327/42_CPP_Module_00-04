@@ -12,7 +12,7 @@ public:
 	ClapTrap(const ClapTrap &clapTrap);
 	~ClapTrap();
 
-	ClapTrap &operator=(ClapTrap &clapTrap);
+	ClapTrap &operator=(const ClapTrap &clapTrap);
 
 	// functions on subject
 	void attack(const string &target);

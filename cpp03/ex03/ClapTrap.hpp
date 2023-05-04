@@ -10,7 +10,6 @@ class ClapTrap {
 public:
 	ClapTrap();
 	ClapTrap(const string &name);
-	ClapTrap(const string &name, unsigned int hp, unsigned int ep, unsigned int ad);
 	ClapTrap(const ClapTrap &clapTrap);
 	virtual ~ClapTrap();
 
@@ -21,12 +20,13 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	// getter, setter
+	// setter
 	void set_name(const string &name);
 	void set_hp(unsigned int update);
 	void set_ep(unsigned int update);
 	void set_ad(unsigned int update);
 
+	// getter
 	string &get_name();
 	unsigned int get_hp();
 	unsigned int get_ep();
@@ -36,6 +36,7 @@ public:
 	void printStatus();
 	bool is_action_available();
 	unsigned int calc_consume_point(unsigned int val, unsigned int minus);
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
 
 protected:
 	string name_;

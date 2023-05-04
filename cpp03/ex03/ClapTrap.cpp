@@ -16,10 +16,6 @@ ClapTrap::ClapTrap() : name_("ClapTrap"), hit_point_(INIT_HP), energy_point_(INI
 	cout << COLOR_GREEN << "ClapTrap default constructor called" << COLOR_RESET << endl;
 }
 
-//ClapTrap::ClapTrap(const string &name, unsigned int hp, unsigned int ep, unsigned int ad) : name_(name), hit_point_(hp), energy_point_(ep), attack_damage_(ad) {
-//	cout << COLOR_GREEN << "constructor called  name:" << name << COLOR_RESET << endl;
-//}
-
 ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
 	cout << COLOR_GREEN << "ClapTrap constructor called  name:" << name << COLOR_RESET << endl;
 }
@@ -56,9 +52,9 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << " can't action..."  << COLOR_RESET << endl;
 		return ;
 	}
-	set_hp(get_hp() + amount);
+	set_hp(calc_repair_hp(get_hp(), amount));
 	set_ep(calc_consume_point(get_ep(), 1));
-	cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << "be repaired " << amount << COLOR_RESET << endl;
+	cout << COLOR_BLUE << "ClapTrap [beRepaired] " << get_name() << " be repaired " << amount << COLOR_RESET << endl;
 }
 
 
@@ -78,6 +74,12 @@ unsigned int ClapTrap::calc_consume_point(unsigned int val,
 		return (val - minus);
 	}
 	return (0);
+}
+
+unsigned int ClapTrap::calc_repair_hp(unsigned int hp, unsigned int repair) {
+	if (UINT_MAX - hp >= repair)
+		return (hp + repair);
+	return (UINT_MAX); // todo
 }
 
 void ClapTrap::printStatus() {

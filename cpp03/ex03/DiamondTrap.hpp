@@ -1,8 +1,17 @@
-//
-// Created by Akira TANIDA on 2023/05/04.
-//
+#pragma once
+#include "ClapTrap.hpp"
 
-#ifndef CPP03_DIAMONDTRAP_HPP
-#define CPP03_DIAMONDTRAP_HPP
+class DiamondTrap : public ClapTrap {
+public:
+	DiamondTrap();
+	DiamondTrap(const string &name);
 
-#endif //CPP03_DIAMONDTRAP_HPP
+
+	void whoAmI();
+
+private:
+	// DiamondTrap class will have a name private attribute
+	// same variable’s name than the one in the ClapTrap base class.
+	string name_;
+
+};

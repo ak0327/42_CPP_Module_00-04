@@ -6,7 +6,8 @@ CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 SRCS		= main.cpp \
 			  ClapTrap.cpp \
 			  ScavTrap.cpp \
-			  FragTrap.cpp
+			  FragTrap.cpp \
+			  DiamondTrap.cpp
 
 OBJ_DIR		= objs
 OBJ			= $(SRCS:%.cpp=%.o)

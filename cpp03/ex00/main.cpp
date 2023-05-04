@@ -102,7 +102,6 @@ int main() {
 		clapTrap.takeDamage(1000);	clapTrap.printStatus();
 		clapTrap.beRepaired(100); clapTrap.printStatus();
 		clapTrap.attack("hoge");	clapTrap.printStatus();
-
 		cout << endl;
 	}
 	{
@@ -128,7 +127,6 @@ int main() {
 		clapTrap.beRepaired(0); clapTrap.printStatus();
 		clapTrap.takeDamage(10);	clapTrap.printStatus();
 		clapTrap.attack("hoge");	clapTrap.printStatus();
-
 		cout << endl;
 	}
 	{
@@ -145,6 +143,10 @@ int main() {
 		foo.printStatus();
 		bar.printStatus();
 
+		foo.takeDamage(100);
+		bar.attack_on(foo);
+		foo.printStatus();
+		bar.printStatus();
 	}
 
 	//	system("leaks a.out");
