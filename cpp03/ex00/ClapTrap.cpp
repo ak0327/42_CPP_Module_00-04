@@ -8,12 +8,19 @@
 #define COLOR_CYAN		"\x1b[36m"
 #define COLOR_RESET		"\x1b[0m"
 
+#define INIT_HP 10
+#define INIT_EP 10
+#define INIT_AD 0
 
-ClapTrap::ClapTrap() : name_("null"), hit_point_(10), energy_point_(10), attack_damage_(0) {
+ClapTrap::ClapTrap() : name_("null"), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
 	cout << COLOR_GREEN << "default constructor called" << COLOR_RESET << endl;
 }
 
-ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(10), energy_point_(10), attack_damage_(0) {
+//ClapTrap::ClapTrap(const string &name, unsigned int hp, unsigned int ep, unsigned int ad) : name_(name), hit_point_(hp), energy_point_(ep), attack_damage_(ad) {
+//	cout << COLOR_GREEN << "constructor called  name:" << name << COLOR_RESET << endl;
+//}
+
+ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
 	cout << COLOR_GREEN << "constructor called  name:" << name << COLOR_RESET << endl;
 }
 
@@ -31,7 +38,7 @@ void ClapTrap::attack(const std::string &target) {
 	set_ep(calc_consume_point(get_ep(), 1));
 
 	// target hp-=ap :: next ex?
-	cout << COLOR_YELLOW << "ClapTrap [attack]" << get_name() << " attacks " << target << ", causing " << get_ap() << " points of damage!" << COLOR_RESET << endl;
+	cout << COLOR_YELLOW << "ClapTrap [attack]" << get_name() << " attacks " << target << ", causing " << get_ad() << " points of damage!" << COLOR_RESET << endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -55,12 +62,15 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 
-string &ClapTrap::get_name() { return (name_); }
+void ClapTrap::set_name(const string &name) { name_ = name; }
 void ClapTrap::set_hp(unsigned int update) { hit_point_ = update; }
 void ClapTrap::set_ep(unsigned int update) { energy_point_ = update; }
+void ClapTrap::set_ad(unsigned int update) { attack_damage_ = update; }
+
+string &ClapTrap::get_name() { return (name_); }
 unsigned int ClapTrap::get_hp() { return (hit_point_); }
 unsigned int ClapTrap::get_ep() { return (energy_point_); }
-unsigned int ClapTrap::get_ap() { return (attack_damage_); }
+unsigned int ClapTrap::get_ad() { return (attack_damage_); }
 
 unsigned int ClapTrap::calc_consume_point(unsigned int val,
 												 unsigned int minus) {
@@ -71,7 +81,7 @@ unsigned int ClapTrap::calc_consume_point(unsigned int val,
 }
 
 void ClapTrap::printStatus() {
-	cout << " [" << get_name() << "'s status]: HP(" << get_hp() << "), EP(" << get_ep() << "), AP(" << get_ap() << ")" << endl;
+	cout << " [" << get_name() << "'s status]: HP(" << get_hp() << "), EP(" << get_ep() << "), AP(" << get_ad() << ")" << endl;
 }
 
 bool ClapTrap::is_action_available() {

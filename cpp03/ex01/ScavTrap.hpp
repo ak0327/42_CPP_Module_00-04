@@ -1,8 +1,19 @@
-//
-// Created by Akira TANIDA on 2023/05/04.
-//
+#pragma once
 
-#ifndef CPP03_SCAVTRAP_HPP
-#define CPP03_SCAVTRAP_HPP
+#include <string>
+#include <iostream>
 
-#endif //CPP03_SCAVTRAP_HPP
+#include "ClapTrap.hpp"
+
+using namespace std;
+
+class ScavTrap : public ClapTrap {
+public:
+	//constructors, destructor and attack() will print different messages.
+	ScavTrap();
+	ScavTrap(const string &name);
+	~ScavTrap();
+	void attack(const string &target);
+
+	void guardGate();
+};

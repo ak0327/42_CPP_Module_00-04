@@ -1,4 +1,5 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 #include <limits>
 
@@ -6,126 +7,40 @@ using namespace std;
 
 int main() {
 	{
-		ClapTrap clapTrap = ClapTrap("Hoge");
-		clapTrap.printStatus();
+		ScavTrap scavTrap = ScavTrap("Dog"); scavTrap.printStatus();
 
-		clapTrap.attack("huga"); clapTrap.printStatus();
-		clapTrap.attack("huga");	clapTrap.printStatus();
-		clapTrap.takeDamage(5);	clapTrap.printStatus();
-		clapTrap.beRepaired(5);	clapTrap.printStatus();
-		clapTrap.takeDamage(15);	clapTrap.printStatus();
+		scavTrap.attack("Cat"); scavTrap.printStatus();
+		scavTrap.takeDamage(50);	scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.beRepaired(5); scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.takeDamage(50);	scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.takeDamage(150); scavTrap.printStatus();
+		scavTrap.guardGate();
 
 		// can't action
-		clapTrap.beRepaired(5);	clapTrap.printStatus();
-		clapTrap.attack("huga");	clapTrap.printStatus();
-		clapTrap.takeDamage(15);	clapTrap.printStatus();
+		scavTrap.beRepaired(100); scavTrap.printStatus();
+		scavTrap.attack("Human");	scavTrap.printStatus();
+		scavTrap.takeDamage(100); scavTrap.printStatus();
 		cout << endl;
 	}
 	{
-		ClapTrap clapTrap = ClapTrap("Huga");
-		clapTrap.printStatus();
+		ScavTrap scavTrap = ScavTrap("Lion"); scavTrap.printStatus();
 
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		cout << endl;
-	}
-	{
-		ClapTrap clapTrap = ClapTrap("Piyo");
-		clapTrap.printStatus();
-
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-
-		clapTrap.takeDamage(100);	clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
-		cout << endl;
-	}
-	{
-		ClapTrap clapTrap = ClapTrap("Foo");
-		clapTrap.printStatus();
-		clapTrap.beRepaired(UINT_MAX - 11); clapTrap.printStatus();
-		clapTrap.beRepaired(1); clapTrap.printStatus();
-		clapTrap.beRepaired(1); clapTrap.printStatus();
-		clapTrap.beRepaired(1); clapTrap.printStatus();
-		clapTrap.takeDamage(UINT_MAX);	clapTrap.printStatus();
-		cout << endl;
-	}
-	{
-		ClapTrap clapTrap = ClapTrap("Huga");
-		clapTrap.printStatus();
-
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.takeDamage(0);	clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
-		clapTrap.takeDamage(1000);	clapTrap.printStatus();
-		clapTrap.beRepaired(100); clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
-
-		cout << endl;
-	}
-	{
-		ClapTrap clapTrap = ClapTrap("Huga");
-		clapTrap.printStatus();
-
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.beRepaired(0); clapTrap.printStatus();
-		clapTrap.takeDamage(10);	clapTrap.printStatus();
-		clapTrap.attack("hoge");	clapTrap.printStatus();
-
+		scavTrap.attack("Tiger"); scavTrap.printStatus();
+		for (int i=0; i<50; i++) {
+			scavTrap.beRepaired(5); scavTrap.printStatus();
+		}
+		scavTrap.takeDamage(50);	scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.takeDamage(50);	scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.takeDamage(150); scavTrap.printStatus();
+		scavTrap.guardGate();
+		scavTrap.beRepaired(100); scavTrap.printStatus();
+		scavTrap.attack("Human");	scavTrap.printStatus();
+		scavTrap.takeDamage(100); scavTrap.printStatus();
 		cout << endl;
 	}
 //	system("leaks a.out");
