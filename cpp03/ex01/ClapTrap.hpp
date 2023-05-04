@@ -36,6 +36,6 @@ private:
 	string name_;
 	unsigned int hit_point_;
 	unsigned int energy_point_;
-	unsigned int attack_damage_;
+	unsigned int attack_point_;
 
 };

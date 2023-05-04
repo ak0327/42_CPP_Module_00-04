@@ -9,11 +9,11 @@
 #define COLOR_RESET		"\x1b[0m"
 
 
-ClapTrap::ClapTrap() : name_("null"), hit_point_(10), energy_point_(10), attack_damage_(0) {
+ClapTrap::ClapTrap() : name_("null"), hit_point_(10), energy_point_(10), attack_point_(0) {
 	cout << COLOR_GREEN << "default constructor called" << COLOR_RESET << endl;
 }
 
-ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(10), energy_point_(10), attack_damage_(0) {
+ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(10), energy_point_(10), attack_point_(0) {
 	cout << COLOR_GREEN << "constructor called  name:" << name << COLOR_RESET << endl;
 }
 
@@ -60,7 +60,7 @@ void ClapTrap::set_hp(unsigned int update) { hit_point_ = update; }
 void ClapTrap::set_ep(unsigned int update) { energy_point_ = update; }
 unsigned int ClapTrap::get_hp() { return (hit_point_); }
 unsigned int ClapTrap::get_ep() { return (energy_point_); }
-unsigned int ClapTrap::get_ap() { return (attack_damage_); }
+unsigned int ClapTrap::get_ap() { return (attack_point_); }
 
 unsigned int ClapTrap::calc_consume_point(unsigned int val,
 												 unsigned int minus) {
