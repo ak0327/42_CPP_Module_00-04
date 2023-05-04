@@ -32,7 +32,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 //	cout << "ABxAP=" << ABxAP << endl;
 //	cout << "BCxBP=" << BCxBP << endl;
 //	cout << "CAxCP=" << CAxCP << endl;
-
-	return ((ABxAP > 0 && BCxBP > 0 && CAxCP > 0)
-	|| (ABxAP < 0 && BCxBP < 0 && CAxCP < 0));
+	Fixed zero = Fixed(0);
+	return ((ABxAP > zero && BCxBP > zero && CAxCP > zero)
+	|| (ABxAP < zero && BCxBP < zero && CAxCP < zero));
 }
