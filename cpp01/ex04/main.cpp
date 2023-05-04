@@ -102,6 +102,7 @@ int main(int argc, char **argv) {
 
 		string	line, content;
 
+		// todo: string + '\n'
 		char c;
 		content = "";
 		while (ifs.get(c))

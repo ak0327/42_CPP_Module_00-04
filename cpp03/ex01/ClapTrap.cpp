@@ -12,7 +12,7 @@
 #define INIT_EP 10
 #define INIT_AD 0
 
-ClapTrap::ClapTrap() : name_("null"), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
+ClapTrap::ClapTrap() : name_("ClapTrap"), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
 	cout << COLOR_GREEN << "ClapTrap default constructor called" << COLOR_RESET << endl;
 }
 
