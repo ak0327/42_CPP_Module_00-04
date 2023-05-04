@@ -13,12 +13,11 @@ public:
 	// copy constructor
 	Fixed(Fixed const &obj);
 	// A constructor that takes a constant integer as a parameter.
-	Fixed(const int intNum);
+	Fixed(int const intNum);
 	// constructor that takes a constant floating-point number as a parameter.
-	Fixed(const float floatNum);
+	Fixed(float const floatNum);
 
 	// copy assignment operator overload
-
 	Fixed &operator=(Fixed const &obj);
 
 	/* ex02 Additional func */
@@ -28,6 +27,7 @@ public:
 	bool operator>=(Fixed const &obj);
 	bool operator<=(Fixed const &obj);
 	bool operator==(Fixed const &obj);
+	bool operator==(Fixed const &obj) const;
 	bool operator!=(Fixed const &obj);
 
 	/* ex02 Additional func */
@@ -35,6 +35,7 @@ public:
 	Fixed operator+(Fixed const &obj);
 	Fixed operator-(Fixed const &obj);
 	Fixed operator*(Fixed const &obj);
+//	Fixed operator*(Fixed const &obj) const;
 	Fixed operator/(Fixed const &obj);
 
 	/* ex02 Additional func */
