@@ -48,6 +48,25 @@ int main() {
 		wrongCat->makeSound();
 		cat->makeSound();
 		cout << endl;
+
+		delete wrongCat;
+		delete cat;
+		cout << endl;
+	}
+	{
+		const Dog dog1 = Dog();
+		const Dog dog2 = Dog(dog1);
+		dog1.makeSound();
+		dog2.makeSound();
+		cout << endl;
+
+	}
+	{
+		const Cat cat1 = Cat();
+		Cat cat2 = cat1;
+		cat1.makeSound();
+		cat2.makeSound();
+		cout << endl;
 	}
 
 //	system("leaks a.out");

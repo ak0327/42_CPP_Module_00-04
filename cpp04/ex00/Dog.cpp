@@ -13,8 +13,8 @@ Dog::Dog() {
 	cout << COLOR_BLUE << "Dog: constructor called" << COLOR_RESET << endl;
 }
 
-Dog::Dog(const Dog &cat) {
-	*this = cat;
+Dog::Dog(const Dog &dog) {
+	*this = dog;
 	cout << COLOR_BLUE << "Dog: copy constructor called" << COLOR_RESET << endl;
 }
 
