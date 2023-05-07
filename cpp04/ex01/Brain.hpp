@@ -4,7 +4,6 @@
 
 #define IDEAS_SIZE 100
 
-using namespace std;
 
 class Brain {
 public:
@@ -13,7 +12,12 @@ public:
 	~Brain();
 	Brain &operator=(const Brain &brain);
 
+	const std::string &getIdeaElem(size_t idx_0_to_99) const;
+	void setIdeaElem(size_t idx_0_to_99, const std::string &elem);
+
 private:
-	string ideas_[IDEAS_SIZE];
+	std::string ideas_[IDEAS_SIZE];
+
+	void assertIdeasIdx(size_t idx) const;
 
 };

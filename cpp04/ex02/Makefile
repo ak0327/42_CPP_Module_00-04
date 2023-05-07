@@ -1,6 +1,6 @@
 NAME		= a.out
 
-CC			= clang++
+CC			= c++
 #CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -g -fsanitize=address
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
@@ -8,8 +8,6 @@ SRCS		= main.cpp \
 			  Animal.cpp \
 			  Cat.cpp \
 			  Dog.cpp \
-			  WrongAnimal.cpp \
-			  WrongCat.cpp \
 			  Brain.cpp
 
 OBJ_DIR		= objs

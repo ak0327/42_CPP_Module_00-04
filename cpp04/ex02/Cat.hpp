@@ -15,6 +15,8 @@ public:
 
 	void makeSound() const;
 
+	Brain &getBrain() const;
+
 private:
 	// Dog and Cat will have a private Brain* attribute
 	Brain *brain_;
