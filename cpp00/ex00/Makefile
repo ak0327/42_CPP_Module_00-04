@@ -1,7 +1,7 @@
 ####################################################
 # COMPILE
 CC			= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 
 ####################################################
@@ -20,10 +20,10 @@ OBJS		= $(SRCS:%.cpp=%.o)
 all		: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CC) $(CXXFLAGS) $^ -o $@
 
 $(OBJS)	: $(SRCS)
-	$(CC) $(CPPFLAGS) -c $(SRCS)
+	$(CC) $(CXXFLAGS) -c $(SRCS)
 
 clean	:
 	$(RM) $(OBJS)

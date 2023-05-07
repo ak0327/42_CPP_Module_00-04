@@ -1,6 +1,6 @@
 CC			= c++
 
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= account
 
@@ -18,11 +18,11 @@ DEPS		= $(SRCS:%.cpp=%.d)
 all	: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CC) $(CXXFLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o	: %.cpp
 	@mkdir -p $$(dirname $@)
-	$(CC) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 clean	:
 	rm -rf $(OBJ_DIR)
