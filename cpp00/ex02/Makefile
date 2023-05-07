@@ -1,4 +1,4 @@
-CC			= g++
+CC			= c++
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
@@ -6,7 +6,7 @@ NAME		= account
 
 SRCS		= Account.cpp \
 			  test.cpp \
-#			  main.cpp
+			  main.cpp
 
 OBJ_DIR		= objs
 OBJ			= $(SRCS:%.cpp=%.o)
@@ -32,6 +32,9 @@ fclean	: clean
 
 re		: fclean all
 
-.PHONY	: all clean fclean re
+run		: re
+	./$(NAME)
+
+.PHONY	: all clean fclean re run
 
 -include $(DEPS)

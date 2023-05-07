@@ -23,12 +23,18 @@ public:
 
 	void add();
 	void search();
-	void display();
-	int	detail_display_by_display_index(const string &search_index);
 
 private:
 	// variable
 	Contact contact_arr[MAXIMUM_SIZE];
 	int		num_of_register;
 
+	void display() const;
+	int	detail_display_by_display_index(const std::string &search_index) const;
+	std::string ft_to_string(int num) const;
+	bool is_str_digit(const std::string &str) const;
+	void display_header() const;
+	void display_row_delim() const;
+	std::string get_valid_width_string(const std::string &str) const;
+	std::string trim(std::string str) const;
 };

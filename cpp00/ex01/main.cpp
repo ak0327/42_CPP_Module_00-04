@@ -1,65 +1,41 @@
 #include <iostream> // cout, endl, cin
-#include <string> // string, to_string, stoi
-#include <vector> // vector
-#include <algorithm> // min, max, swap, sort, reverse, lower_bound, upper_bound
-#include <utility> // pair, make_pair
-#include <tuple> // tuple, make_tuple
-#include <cstdint> // int64_t, int*_t
-#include <cstdio> // printf
-#include <map> // map
-#include <queue> // queue, priority_queue
-#include <set> // set
-#include <stack> // stack
-#include <deque> // deque
-#include <unordered_map> // unordered_map
-#include <unordered_set> // unordered_set
-#include <bitset> // bitset
-#include <cctype> // isupper, islower, isdigit, toupper, tolower
-
-#define rep(i, n) for (int i=0; i<(int)n; i++)
-#define my_cout(x) cout << x << endl;
 
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
-using namespace std; //名前空間 std::を省略
-
+#define COLOR_RED		"\x1b[31m"
+#define COLOR_GREEN		"\x1b[32m"
+#define COLOR_YELLOW	"\x1b[33m"
+#define COLOR_BLUE		"\x1b[34m"
+#define COLOR_MAGENTA	"\x1b[35m"
+#define COLOR_CYAN		"\x1b[36m"
+#define COLOR_RESET		"\x1b[0m"
 
 int main() {
-	//phone book, contactの初期化
-
-//	Contact contact("aaa",
-//					"bbb",
-//					"hoge",
-//					"1212",
-//					"hoge");
-//	contact.GetData();
-//
-//	Contact contact2;
-//	contact2.GetData();
-	string	input_cmd;
+	std::string input_cmd;
 	PhoneBook phonebook;
 
-	cout << "############ PHONE  BOOK ###########" << endl;
+	std::cout << COLOR_GREEN"############ PHONE  BOOK ###########"COLOR_RESET << std::endl;
 	while (true)
 	{
-		cout << "### command: ADD / SEARCH / EXIT ###" << endl;
-		cout << "# Input Command >> " << ends;
-		if (!getline(cin, input_cmd)) {
-			cout << "# ^D" << endl;
-			return (0);
+		std::cout << COLOR_GREEN"### command: ADD / SEARCH / EXIT ###"COLOR_RESET << std::endl;
+		std::cout << COLOR_GREEN"# Input Command >> "COLOR_RESET << std::ends;
+
+		if (!getline(std::cin, input_cmd)) {
+			std::cout << "# input ^D, exit" << std::endl;
+			return 0;
 		}
 		if (input_cmd == "ADD") {
 			phonebook.add();
 		} else if (input_cmd == "SEARCH") {
 			phonebook.search();
 		} else if (input_cmd == "EXIT") {
-			cout << "# BYE :)" << endl;
+			std::cout << "# BYE :)" << std::endl;
 			break ;
 		} else {
-			cout << "# [Error] Invalid command" << endl;
+			std::cout << COLOR_YELLOW"# [Error] Invalid command"COLOR_RESET << std::endl;
 		}
-		cout << "#" << endl;
+		std::cout << COLOR_GREEN"#"COLOR_RESET << std::endl;
 	}
-
+	system("leaks phonebook");
+	return 0;
 }

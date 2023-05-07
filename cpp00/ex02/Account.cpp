@@ -2,8 +2,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 int Account::getNbAccounts(void) {
 	return 0;
 }
@@ -46,7 +44,7 @@ Account::Account(int initial_deposit) {
 
 
 	// created
-	cout << "created" << endl;
+	std::cout << "created" << std::endl;
 }
 
 Account::~Account(void) {
@@ -56,7 +54,7 @@ Account::~Account(void) {
 	// display index and amount
 
 	// closed
-	cout << "closed" << endl;
+	std::cout << "closed" << std::endl;
 }
 
 void Account::makeDeposit(int deposit) {

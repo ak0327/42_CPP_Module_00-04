@@ -1,4 +1,4 @@
-CC			= g++
+CC			= c++
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
@@ -28,9 +28,12 @@ clean	:
 	rm -rf $(OBJ_DIR)
 
 fclean	: clean
-	rm $(NAME)
+	$(RM) $(NAME)
 
 re		: fclean all
+
+run		: re
+	./$(NAME)
 
 .PHONY	: all clean fclean re
 
