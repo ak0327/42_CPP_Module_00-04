@@ -43,10 +43,10 @@ Fixed::Fixed(const int intNum) {
 // The fractional bits value is initialized to 8 like in exercise 00.
 Fixed::Fixed(const float floatNum) {
 	if (isnan(floatNum)) {
-		throw invalid_argument("invalid argument : 'nan'");
+		throw std::invalid_argument("invalid argument : 'nan'");
 	}
 	else if (isinf(floatNum)) {
-		throw invalid_argument("invalid argument : 'inf'");
+		throw std::invalid_argument("invalid argument : 'inf'");
 	}
 	setRawBits(static_cast<int>(roundf((floatNum * (1 << fractionalBits_)))));
 }
@@ -122,7 +122,7 @@ Fixed Fixed::operator*(Fixed const &obj) {
 
 Fixed Fixed::operator/(Fixed const &obj) {
 	if (obj.getRawBits() == 0) {
-		throw runtime_error("Division by zero");
+		throw std::runtime_error("Division by zero");
 	}
 	long long div = static_cast<long long>(getRawBits()) << fractionalBits_;
 	setRawBits(static_cast<int>(div / obj.getRawBits()));
@@ -194,7 +194,7 @@ int Fixed::toInt() const {
 
 // inserts a floating-point representation of the fixed-point number
 // into the output stream object passed as parameter.
-ostream &operator<<(ostream &out, const Fixed &obj) {
+std::ostream &operator<<(std::ostream &out, const Fixed &obj) {
 	out << obj.toFloat();
 	return out;
 }

@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cmath>
 
-using namespace std;
 
 class Fixed {
 public:
@@ -45,4 +44,4 @@ private:
 /* ex01 Additional func */
 // inserts a floating-point representation of the fixed-point number
 // into the output stream object passed as parameter.
-ostream &operator<<(ostream &out, const Fixed &obj);
+std::ostream &operator<<(std::ostream &out, const Fixed &obj);

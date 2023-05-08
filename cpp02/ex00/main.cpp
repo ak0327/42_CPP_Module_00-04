@@ -2,33 +2,31 @@
 
 #include "Fixed.hpp"
 
-using namespace std;
-
 int main() {
 
-	cout << "\nFixed a:" << endl;
+	std::cout << "\nFixed a:" << std::endl;
 	Fixed a;
 
-	cout << "\nFixed b(a):" << endl;
+	std::cout << "\nFixed b(a):" << std::endl;
 	Fixed b(a);
 
-	cout << "\nFixed c:" << endl;
+	std::cout << "\nFixed c:" << std::endl;
 	Fixed c;
 
-	cout << "\nc = b:" << endl;
+	std::cout << "\nc = b:" << std::endl;
 	c = b;
 
 
-	cout << "\na.getRawBits():" << endl;
-	cout << a.getRawBits() << endl;
+	std::cout << "\na.getRawBits():" << std::endl;
+	std::cout << a.getRawBits() << std::endl;
 
-	cout << "\nb.getRawBits():" << endl;
-	cout << b.getRawBits() << endl;
+	std::cout << "\nb.getRawBits():" << std::endl;
+	std::cout << b.getRawBits() << std::endl;
 
-	cout << "\nc.getRawBits():" << endl;
-	cout << c.getRawBits() << endl;
+	std::cout << "\nc.getRawBits():" << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 
-	cout << endl;
+	std::cout << std::endl;
 //	system("leaks a.out");
 	return 0;
 }

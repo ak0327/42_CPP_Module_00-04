@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
-
 class Fixed {
 public:
 	// default constructor, initializes the fixed-point number value to 0
