@@ -17,15 +17,15 @@ ScavTrap::ScavTrap() {
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
-	cout << COLOR_GREEN << "ScavTrap default constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "ScavTrap default constructor called" << COLOR_RESET << std::endl;
 }
 
-ScavTrap::ScavTrap(const string &name) {
+ScavTrap::ScavTrap(const std::string &name) {
 	set_name(name);
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
-	cout << COLOR_GREEN << "ScavTrap constructor called  name:" << name << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "ScavTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
@@ -35,7 +35,7 @@ ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
 }
 
 ScavTrap::~ScavTrap() {
-	cout << COLOR_RED << "ScavTrap destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_RED << "ScavTrap destructor called" << COLOR_RESET << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap) {
@@ -54,9 +54,9 @@ void ScavTrap::attack_on(ScavTrap &targetObj) {
 		return ;
 	}
 	if (targetObj.get_hp() == 0) {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 			 "ScavTrap [attack] " << targetObj.get_name() <<
-			 " is already ZERO hit point" << COLOR_RESET << endl;
+			 " is already ZERO hit point" << COLOR_RESET << std::endl;
 		return ;
 	}
 	// for subject, print message
@@ -74,14 +74,14 @@ void ScavTrap::attack_on(ScavTrap &targetObj) {
 void ScavTrap::attack(const std::string &target) {
 	// check hp
 	if (!is_actionable()) {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 			 "ScavTrap [attack] " << get_name() <<
-			 " can't action..." << COLOR_RESET << endl;
+			 " can't action..." << COLOR_RESET << std::endl;
 	} else {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 			 "ScavTrap [attack] " << get_name() <<
 			 " attacks " << target << ", causing " <<
-			 get_ad() << " points of damage!" << COLOR_RESET << endl;
+			 get_ad() << " points of damage!" << COLOR_RESET << std::endl;
 	}
 }
 
@@ -89,7 +89,7 @@ void ScavTrap::attack(const std::string &target) {
 // 0 < HP <= 10   : DANGER
 // 10 < HP <= 100 : GOOD
 void ScavTrap::guardGate() {
-	string status;
+	std::string status;
 	if (get_hp() == 0) {
 		status = COLOR_RED "DIED" COLOR_RESET;
 	} else if (get_hp() <= 10) {
@@ -97,5 +97,5 @@ void ScavTrap::guardGate() {
 	} else {
 		status = COLOR_CYAN "GOOD" COLOR_RESET;
 	}
-	cout << "[" << get_name() << "'s guardGate] " << status << endl;
+	std::cout << "[" << get_name() << "'s guardGate] " << status << std::endl;
 }

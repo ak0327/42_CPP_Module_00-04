@@ -1,8 +1,6 @@
 #include <iostream>
 #include "FragTrap.hpp"
 
-using namespace std;
-
 int main() {
 	{
 		FragTrap fragTrap = FragTrap("Alpha"); fragTrap.printStatus();
@@ -15,7 +13,7 @@ int main() {
 		fragTrap.beRepaired(100); fragTrap.printStatus();
 		fragTrap.takeDamage(100); fragTrap.printStatus();
 		fragTrap.highFiveGuys();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		FragTrap fragTrap = FragTrap("Beta"); fragTrap.printStatus();
@@ -28,7 +26,7 @@ int main() {
 		fragTrap.highFiveGuys();
 		fragTrap.beRepaired(5); fragTrap.printStatus();
 		fragTrap.highFiveGuys();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		FragTrap foo = FragTrap("Foo");
@@ -63,7 +61,7 @@ int main() {
 		bar.highFiveGuys();
 
 		bar.attack_on(foo);
-		cout << endl;
+		std::cout << std::endl;
 	}
 //	system("leaks a.out");
 	return 0;

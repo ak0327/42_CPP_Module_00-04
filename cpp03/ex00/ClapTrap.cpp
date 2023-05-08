@@ -13,11 +13,11 @@
 #define INIT_AD 0
 
 ClapTrap::ClapTrap() : name_("null"), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
-	cout << COLOR_GREEN << "ClapTrap default constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "ClapTrap default constructor called" << COLOR_RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(const string &name) : name_(name), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
-	cout << COLOR_GREEN << "ClapTrap constructor called  name:" << name << COLOR_RESET << endl;
+ClapTrap::ClapTrap(const std::string &name) : name_(name), hit_point_(INIT_HP), energy_point_(INIT_EP), attack_damage_(INIT_AD) {
+	std::cout << COLOR_GREEN << "ClapTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
 }
 
 ClapTrap::~ClapTrap() {
-	cout << COLOR_RED << "ClapTrap destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_RED << "ClapTrap destructor called" << COLOR_RESET << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap) {
@@ -47,9 +47,9 @@ void ClapTrap::attack_on(ClapTrap &targetObj) {
 		return ;
 	}
 	if (targetObj.get_hp() == 0) {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 			 "ClapTrap [attack] " << targetObj.get_name() <<
-			 " is already ZERO hit point" << COLOR_RESET << endl;
+			 " is already ZERO hit point" << COLOR_RESET << std::endl;
 		return ;
 	}
 	// for subject, print message
@@ -67,51 +67,51 @@ void ClapTrap::attack_on(ClapTrap &targetObj) {
 void ClapTrap::attack(const std::string &target) {
 	// check hp
 	if (!is_actionable()) {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 		"ClapTrap [attack] " << get_name() <<
-		" can't action..." << COLOR_RESET << endl;
+		" can't action..." << COLOR_RESET << std::endl;
 	} else {
-		cout << COLOR_YELLOW <<
+		std::cout << COLOR_YELLOW <<
 		"ClapTrap [attack] " << get_name() <<
 		" attacks " << target << ", causing " <<
-		get_ad() << " points of damage!" << COLOR_RESET << endl;
+		get_ad() << " points of damage!" << COLOR_RESET << std::endl;
 	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (!is_actionable()) {
-		cout << COLOR_MAGENTA <<
+		std::cout << COLOR_MAGENTA <<
 		"ClapTrap [takeDamage] " << get_name() <<
-		" can't action..." << COLOR_RESET << endl;
+		" can't action..." << COLOR_RESET << std::endl;
 		return ;
 	}
 	set_hp(calc_consume_point(get_hp(), amount));
-	cout << COLOR_MAGENTA <<
+	std::cout << COLOR_MAGENTA <<
 	"ClapTrap [takeDamage] " << get_name() <<
-	" take damage " << amount << COLOR_RESET << endl;
+	" take damage " << amount << COLOR_RESET << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	// validate in this func ?
 	if (!is_actionable()) {
-		cout << COLOR_BLUE <<
+		std::cout << COLOR_BLUE <<
 		"ClapTrap [beRepaired] " << get_name() <<
-		" can't action..."  << COLOR_RESET << endl;
+		" can't action..."  << COLOR_RESET << std::endl;
 		return ;
 	}
 	set_hp(calc_repair_hp(get_hp(), amount));
 	set_ep(calc_consume_point(get_ep(), 1));
-	cout << COLOR_BLUE <<
+	std::cout << COLOR_BLUE <<
 	"ClapTrap [beRepaired] " << get_name() <<
-	" be repaired " << amount << COLOR_RESET << endl;
+	" be repaired " << amount << COLOR_RESET << std::endl;
 }
 
-void ClapTrap::set_name(const string &name) { name_ = name; }
+void ClapTrap::set_name(const std::string &name) { name_ = name; }
 void ClapTrap::set_hp(unsigned int update) { hit_point_ = update; }
 void ClapTrap::set_ep(unsigned int update) { energy_point_ = update; }
 void ClapTrap::set_ad(unsigned int update) { attack_damage_ = update; }
 
-string &ClapTrap::get_name() { return (name_); }
+std::string &ClapTrap::get_name() { return (name_); }
 unsigned int ClapTrap::get_hp() { return (hit_point_); }
 unsigned int ClapTrap::get_ep() { return (energy_point_); }
 unsigned int ClapTrap::get_ad() { return (attack_damage_); }
@@ -131,10 +131,10 @@ unsigned int ClapTrap::calc_repair_hp(unsigned int hp, unsigned int repair) {
 }
 
 void ClapTrap::printStatus() {
-	cout << " [" << get_name() << "'s status]: HP(" <<
+	std::cout << " [" << get_name() << "'s status]: HP(" <<
 	get_hp() << "), EP(" <<
 	get_ep() << "), AP(" <<
-	get_ad() << ")" << endl;
+	get_ad() << ")" << std::endl;
 }
 
 bool ClapTrap::is_actionable() {

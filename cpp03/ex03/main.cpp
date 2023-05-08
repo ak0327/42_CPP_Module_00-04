@@ -1,16 +1,15 @@
 #include <iostream>
 #include "DiamondTrap.hpp"
 
-using namespace std;
 
 int main() {
 	{
 		DiamondTrap diamond = DiamondTrap("Alpha"); diamond.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		diamond.whoAmI();
-		cout << endl;
+		std::cout << std::endl;
 
 		diamond.takeDamage(50);	diamond.printStatus();
 		diamond.beRepaired(5); diamond.printStatus();
@@ -18,12 +17,12 @@ int main() {
 		diamond.takeDamage(150); diamond.printStatus();
 		diamond.beRepaired(100); diamond.printStatus();
 		diamond.takeDamage(100); diamond.printStatus();
-		cout << "\n" << endl;
+		std::cout << "\n" << std::endl;
 	}
 	{
 		DiamondTrap diamond = DiamondTrap("Beta"); diamond.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		diamond.whoAmI();
 		diamond.highFiveGuys();
@@ -31,31 +30,31 @@ int main() {
 			diamond.beRepaired(10);
 		}
 
-		cout << endl;
+		std::cout << std::endl;
 
 		diamond.printStatus();
 		diamond.beRepaired(5); diamond.printStatus();
-		cout << "\n" << endl;
+		std::cout << "\n" << std::endl;
 	}
 	{
 		DiamondTrap foo = DiamondTrap("Foo");
 		DiamondTrap bar = DiamondTrap("Bar");
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.highFiveGuys();
 		bar.guardGate();
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.whoAmI();
 		bar.whoAmI();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.printStatus();
 		bar.beRepaired(5);
 		bar.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.attack_on(bar);
 		foo.attack_on(bar);
@@ -64,13 +63,13 @@ int main() {
 		foo.printStatus();
 		bar.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.attack_on(bar);
 		foo.printStatus();
 		bar.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		foo.attack_on(bar);
 		foo.attack_on(bar);
@@ -78,12 +77,12 @@ int main() {
 		foo.printStatus();
 		bar.printStatus();
 
-		cout << endl;
+		std::cout << std::endl;
 
 		bar.guardGate();
 		bar.highFiveGuys();
 		bar.attack_on(foo);
-		cout << "\n" << endl;
+		std::cout << "\n" << std::endl;
 	}
 //	system("leaks a.out");
 	return 0;

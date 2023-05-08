@@ -2,8 +2,6 @@
 #include <iostream>
 #include <limits>
 
-using namespace std;
-
 int main() {
 	{
 		ClapTrap clapTrap = ClapTrap("Hoge");
@@ -16,7 +14,7 @@ int main() {
 		// can't action
 		clapTrap.beRepaired(5);	clapTrap.printStatus();
 		clapTrap.takeDamage(15);	clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap clapTrap = ClapTrap("Huga");
@@ -35,7 +33,7 @@ int main() {
 		clapTrap.takeDamage(1);	clapTrap.printStatus();
 		clapTrap.takeDamage(1);	clapTrap.printStatus();
 		clapTrap.takeDamage(1);	clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap clapTrap = ClapTrap("Piyo");
@@ -57,7 +55,7 @@ int main() {
 
 		clapTrap.takeDamage(100);	clapTrap.printStatus();
 		clapTrap.beRepaired(100); clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap clapTrap = ClapTrap("Foo");
@@ -70,7 +68,7 @@ int main() {
 		clapTrap.beRepaired(1); clapTrap.printStatus();
 		clapTrap.beRepaired(1); clapTrap.printStatus();
 		clapTrap.takeDamage(UINT_MAX);	clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap clapTrap = ClapTrap("Huga");
@@ -97,7 +95,7 @@ int main() {
 		clapTrap.beRepaired(100); clapTrap.printStatus();
 		clapTrap.takeDamage(1000);	clapTrap.printStatus();
 		clapTrap.beRepaired(100); clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap clapTrap = ClapTrap("Huga");
@@ -122,7 +120,7 @@ int main() {
 		clapTrap.beRepaired(0); clapTrap.printStatus();
 		clapTrap.takeDamage(10);	clapTrap.printStatus();
 		clapTrap.beRepaired(0); clapTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ClapTrap foo = ClapTrap("Foo");
@@ -144,6 +142,6 @@ int main() {
 		bar.printStatus();
 	}
 
-	//	system("leaks a.out");
+		system("leaks a.out");
 	return 0;
 }

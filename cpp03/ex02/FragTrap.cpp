@@ -17,15 +17,15 @@ FragTrap::FragTrap() {
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
-	cout << COLOR_GREEN << "FragTrap default constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "FragTrap default constructor called" << COLOR_RESET << std::endl;
 }
 
-FragTrap::FragTrap(const string &name) {
+FragTrap::FragTrap(const std::string &name) {
 	set_name(name);
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
-	cout << COLOR_GREEN << "FragTrap constructor called  name:" << name << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "FragTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &fragTrap) {
@@ -35,7 +35,7 @@ FragTrap::FragTrap(const FragTrap &fragTrap) {
 }
 
 FragTrap::~FragTrap() {
-	cout << COLOR_RED << "FragTrap destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_RED << "FragTrap destructor called" << COLOR_RESET << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &fragTrap) {
@@ -51,11 +51,11 @@ FragTrap &FragTrap::operator=(const FragTrap &fragTrap) {
 
 void FragTrap::highFiveGuys() {
 	if (is_actionable()) {
-		cout << COLOR_GREEN << "[" << get_name() << "] (*´ω`)人(´ω`*)" << COLOR_RESET << endl;
+		std::cout << COLOR_GREEN << "[" << get_name() << "] (*´ω`)人(´ω`*)" << COLOR_RESET << std::endl;
 	} else if (get_hp() == 0) {
-		cout << COLOR_RED << "[" << get_name() << "] _(´ཀ`」 ∠)_" << COLOR_RESET << endl;
+		std::cout << COLOR_RED << "[" << get_name() << "] _(´ཀ`」 ∠)_" << COLOR_RESET << std::endl;
 	}
 	else {
-		cout << COLOR_BLUE << "[" << get_name() << "] ｡ﾟ･（>Д<）･ﾟ｡" << COLOR_RESET << endl;
+		std::cout << COLOR_BLUE << "[" << get_name() << "] ｡ﾟ･（>Д<）･ﾟ｡" << COLOR_RESET << std::endl;
 	}
 }
