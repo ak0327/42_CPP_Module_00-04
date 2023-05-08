@@ -4,11 +4,9 @@
 #include "FileHandler.hpp"
 #include "ReplaceHandler.hpp"
 
-using namespace std;
-
 static void check_argc(int argc) {
 	if (argc != 4) {
-		throw invalid_argument(
+		throw std::invalid_argument(
 				"[Error] Invalid argument. Input following:\n"
 				"        $ ./a.out <filename> <string to be replaced> <string to replace>");
 	}
@@ -18,29 +16,14 @@ static void check_argc(int argc) {
 int main(int argc, char **argv) {
 	try {
 		check_argc(argc);
-		string filename = argv[1];
+		std::string filename = argv[1];
+
 		FileHandler file(filename);
 		ReplaceHandler replace = ReplaceHandler(file);
 		replace.execReplace(argv[2], argv[3]);
 	}
-	catch (exception &e) {
-		cerr << e.what() << endl;
+	catch (std::exception const &e) {
+		std::cerr << e.what() << std::endl;
 	}
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

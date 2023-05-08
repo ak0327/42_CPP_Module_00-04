@@ -12,27 +12,27 @@ Zombie::Zombie() {
 	name_ = "";
 }
 
-Zombie::Zombie(string name) {
+Zombie::Zombie(std::string name) {
 	name_ = name;
-	cout << COLOR_BLUE << name_ << " created" << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << name_ << " created" << COLOR_RESET << std::endl;
 }
 
 Zombie::~Zombie() {
-	cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << std::endl;
 }
 
 void Zombie::announce() {
-	cout << COLOR_RED << name_ << ": BraiiiiiiinnnzzzZ..." << COLOR_RESET << endl;
+	std::cout << COLOR_RED << name_ << ": BraiiiiiiinnnzzzZ..." << COLOR_RESET << std::endl;
 }
 
-void Zombie::randomChump(string name) {
+void Zombie::randomChump(std::string name) {
 	Zombie newZombie = Zombie(name);
 	newZombie.announce();
 }
 
-Zombie *zombieHorde(int N, string name) {
+Zombie *zombieHorde(int N, std::string name) {
 	if (N <= 0) {
-		throw invalid_argument("[Error] invalid argument: N <= 0");
+		throw std::invalid_argument("[Error] invalid argument: N <= 0");
 	}
 	Zombie *zombies = new Zombie[N];
 	for (int i=0; i<N; i++) {

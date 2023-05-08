@@ -4,9 +4,10 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-
 int main() {
 	{
+		std::cout << "\nsubject 1" << std::endl;
+
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
 		bob.attack();
@@ -15,8 +16,10 @@ int main() {
 		club.setType("some other type of club");
 		bob.attack();
 	}
-	cout << endl;
+	std::cout << std::endl;
 	{
+		std::cout << "\nsubject 2" << std::endl;
+
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
 
@@ -26,8 +29,10 @@ int main() {
 		club.setType("some other type of club");
 		jim.attack();
 	}
-	cout << endl;
+	std::cout << std::endl;
 	{
+		std::cout << "\ntest" << std::endl;
+
 		HumanB humanB("humanB");
 		humanB.attack();
 
@@ -35,11 +40,11 @@ int main() {
 		humanB.setWeapon(smile);
 		humanB.attack();
 		smile.setType("sad ;-");
-		cout << "gettype:" << smile.getType() << endl;
+		std::cout << "gettype:" << smile.getType() << std::endl;
 		humanB.getType();
 		humanB.attack();
 	}
-	cout << endl;
-//	system("leaks a.out");
+	std::cout << std::endl;
+	system("leaks a.out");
 	return 0;
 }

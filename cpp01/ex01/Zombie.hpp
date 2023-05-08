@@ -1,21 +1,18 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
-
 class Zombie {
 public:
-//	Zombie(string name) : name_(name) {}
 	Zombie();
-	Zombie(string name);
+	Zombie(std::string name);
 	~Zombie();
 
 	void announce();
-	void randomChump(string name);
+	void randomChump(std::string name);
 
 private:
-	string name_;
+	std::string name_;
 
 };
 
-Zombie *zombieHorde(int N, string name);
+Zombie *zombieHorde(int N, std::string name);

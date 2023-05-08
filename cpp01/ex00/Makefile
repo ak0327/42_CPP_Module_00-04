@@ -1,7 +1,7 @@
 NAME		= a.out
 
-CC			= g++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CC			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRCS		= main.cpp \
 			  Zombie.cpp
@@ -14,11 +14,11 @@ DEPS		= $(OBJS:%.o=%.d)
 all		: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CPPFLAGS) $^ -o $@
+	$(CC) $(CXXFLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o : %.cpp
 	@mkdir -p $$(dirname $@)
-	$(CC) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 clean	:
 	rm -rf $(OBJ_DIR)

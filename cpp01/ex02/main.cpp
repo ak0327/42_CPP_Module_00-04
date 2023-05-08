@@ -1,20 +1,19 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 
-using namespace std;
-
-void print_strs(string var, string *ptr, string &ref)
+void print_strs(std::string var, std::string *ptr, std::string &ref)
 {
-	cout << "strVAR:" << var << ", " << &var << endl;
-	cout << "strPTR:" << *ptr << ", " << &ptr << endl;
-	cout << "strREF:" << ref << ", " << &ref << endl;
-	cout << endl;
+	std::cout << std::setw(10) << "strVAR : " << std::setw(15) <<  var << " " << &var << std::endl;
+	std::cout << std::setw(10) << "strPTR : " << std::setw(15) <<  *ptr << " " << &ptr << std::endl;
+	std::cout << std::setw(10) << "strREF : " << std::setw(15) <<  ref << " " << &ref << std::endl;
+	std::cout << std::endl;
 }
 
 int main() {
-	string strVAR = "HI THIS IS BRAIN";
-	string *strPTR = &strVAR;
-	string &strREF = strVAR;
+	std::string strVAR = "HI THIS IS BRAIN";
+	std::string *strPTR = &strVAR;
+	std::string &strREF = strVAR;
 
 	print_strs(strVAR, strPTR, strREF);
 

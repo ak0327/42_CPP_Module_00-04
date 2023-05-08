@@ -9,10 +9,9 @@ FileHandler &ReplaceHandler::get_file() {
 
 void ReplaceHandler::execReplace(const std::string &toBeReplaced,
 								 const std::string &toReplace) {
-	string	line, content;
-	string replaced;
+	std::string	content;
+	std::string replaced;
 
-	// todo: string + '\n'
 	while (getline(get_file().get_ifs(), content)) {
 		if (!get_file().get_ifs().eof()) {
 			content += "\n";
@@ -24,9 +23,9 @@ void ReplaceHandler::execReplace(const std::string &toBeReplaced,
 	}
 }
 
-string get_replaced_line(string src, const string &toBeReplaced, const string &toReplace) {
-	size_t i, j;
-	string line, tmp;
+std::string ReplaceHandler::get_replaced_line(std::string src, const std::string &toBeReplaced, const std::string &toReplace) const {
+	size_t		i, j;
+	std::string	line, tmp;
 
 	i = 0;
 	line = "";

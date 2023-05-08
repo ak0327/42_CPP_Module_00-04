@@ -1,6 +1,6 @@
 NAME		= a.out
 
-CC			= g++
+CC			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 SRCS		= main.cpp
@@ -9,10 +9,10 @@ OBJS		= $(SRCS:%.cpp=%.o)
 all	: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CXXFLAGS) $^ -o $@
+	$(CC) $(CXXFLAGS) -o $@ $^
 
 $(OBJS)	: $(SRCS)
-	$(CC) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -o $@  -c $<
 
 clean	:
 	$(RM) $(OBJS)

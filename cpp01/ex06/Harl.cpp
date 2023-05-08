@@ -28,30 +28,30 @@ Harl::Harl() {
 Harl::~Harl() {}
 
 void Harl::debug() {
-	cout << COLOR_GREEN << "[DEBUG]" << COLOR_RESET << endl;
-	cout << COLOR_GREEN << MSG_DEBUG << COLOR_RESET << endl;
-	cout << endl;
+	std::cout << COLOR_GREEN << "[DEBUG]" << COLOR_RESET << std::endl;
+	std::cout << COLOR_GREEN << MSG_DEBUG << COLOR_RESET << std::endl;
+	std::cout << std::endl;
 }
 
 void Harl::info() {
-	cout << COLOR_YELLOW << "[INFO]" << COLOR_RESET << endl;
-	cout << COLOR_YELLOW << MSG_INFO << COLOR_RESET << endl;
-	cout << endl;
+	std::cout << COLOR_YELLOW << "[INFO]" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << MSG_INFO << COLOR_RESET << std::endl;
+	std::cout << std::endl;
 }
 
 void Harl::warning() {
-	cout << COLOR_BLUE << "[WARNING]" << COLOR_RESET << endl;
-	cout << COLOR_BLUE << MSG_WARNING << COLOR_RESET << endl;
-	cout << endl;
+	std::cout << COLOR_BLUE << "[WARNING]" << COLOR_RESET << std::endl;
+	std::cout << COLOR_BLUE << MSG_WARNING << COLOR_RESET << std::endl;
+	std::cout << std::endl;
 }
 
 void Harl::error() {
-	cout << COLOR_MAGENTA << "[ERROR]" << COLOR_RESET << endl;
-	cout << COLOR_MAGENTA << MSG_ERROR << COLOR_RESET << endl;
-	cout << endl;
+	std::cout << COLOR_MAGENTA << "[ERROR]" << COLOR_RESET << std::endl;
+	std::cout << COLOR_MAGENTA << MSG_ERROR << COLOR_RESET << std::endl;
+	std::cout << std::endl;
 }
 
-void Harl::filter(string level) {
+void Harl::filter(std::string level) {
 	int i;
 
 	i = 0;
@@ -72,7 +72,7 @@ void Harl::filter(string level) {
 			error();
 			return ;
 		default:
-			throw invalid_argument("[Error] Invalid argument. Input following Levels:"
+			throw std::invalid_argument("[Error] Invalid argument. Input following Levels:"
 								   " DEBUG / INFO / WARNING / ERROR");
 	}
 }

@@ -1,32 +1,38 @@
 #include "Zombie.hpp"
 
 int main() {
-	string nameA = "zombieA";
-	string nameB = "zombieB";
-	string nameC = "zombieC";
-	string nameD = "zombieD";
+	{
+		std::string nameA = "zombieA";
+		std::string nameB = "zombieB";
+		std::cout << "\n=== [zombie A] construct ===" << std::endl;
+		Zombie zombieA = Zombie(nameA);
 
-	cout << "\n=== [zombie A] construct ===" << endl;
-	Zombie zombieA = Zombie(nameA);
+		zombieA.announce();
 
-	zombieA.announce();
+		std::cout << "\n=== [zombieA] random Chump \"zombieB\" ===" << std::endl;
+		zombieA.randomChump(nameB);
 
-	cout << "\n=== [zombieA] random Chump \"zombieB\" ===" << endl;
-	zombieA.randomChump(nameB);
+		std::cout << "\n=== [zombieA] destroy ===" << std::endl;
+		std::cout << std::endl;
+	}
+	{
+		std::string nameC = "zombieC";
+		std::string nameD = "zombieD";
 
-//	cout << "\n=== [zombieA] destroy ===" << endl;
-//	zombieA.~Zombie();
+		std::cout << "\n=== [zombieC] create by newZombie ===" << std::endl;
+		Zombie *zombieC = newZombie(nameC);
+		std::cout << "\n=== [zombieC] announce ===" << std::endl;
+		zombieC->announce();
+		std::cout << "\n=== [zombieC] random Chymp \"zombieD\" ===" << std::endl;
+		zombieC->randomChump(nameD);
 
-	cout << endl;
+		std::cout << "\n=== [zombieC] delete ===" << std::endl;
+		delete zombieC;
+		std::cout << std::endl;
 
-	cout << "\n=== [zombieC] create by newZombie ===" << endl;
-	Zombie *zombieC = newZombie(nameC);
-	cout << "\n=== [zombieC] announce ===" << endl;
-	zombieC->announce();
-	cout << "\n=== [zombieC] random Chymp \"zombieD\" ===" << endl;
-	zombieC->randomChump(nameD);
-	cout << "\n=== [zombieC] delete ===" << endl;
-	delete zombieC;
+	}
 
-//	system("leaks a.out");
+	system("leaks a.out");
 }
+
+

@@ -4,8 +4,6 @@
 #include <iostream>
 #include "FileHandler.hpp"
 
-using namespace std;
-
 class ReplaceHandler {
 public:
 	ReplaceHandler(FileHandler &file);
@@ -13,11 +11,12 @@ public:
 
 	FileHandler &get_file();
 
-	void execReplace(const string &toBeReplaced,
-					 const string &toReplace);
+	void execReplace(const std::string &toBeReplaced,
+					 const std::string &toReplace);
 
 private:
 	FileHandler &file_;
+
+	std::string get_replaced_line(std::string src, const std::string &toBeReplaced, const std::string &toReplace) const;
 };
 
-string get_replaced_line(string src, const string &toBeReplaced, const string &toReplace);

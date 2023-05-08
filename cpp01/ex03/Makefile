@@ -1,6 +1,6 @@
 NAME		= a.out
 
-CC			= g++
+CC			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRCS		= main.cpp \
@@ -30,6 +30,9 @@ fclean	: clean
 	$(RM) $(NAME)
 
 re		: fclean all
+
+run		: re
+	./$(NAME)
 
 .PHONY	: all clean fclean re
 

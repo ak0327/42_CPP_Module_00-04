@@ -9,14 +9,12 @@
 #define WARNING_IDX			2
 #define ERROR_IDX			3
 
-using namespace std;
-
 class Harl {
 public:
 	Harl();
 	~Harl();
 
-	void complain(string level);
+	void complain(std::string level);
 
 	typedef void (Harl::*funcPtr)();
 
@@ -26,7 +24,7 @@ private:
 	void warning(void);
 	void error(void);
 
-	string levels[SIZE_OF_COMPLAINS];
+	std::string levels[SIZE_OF_COMPLAINS];
 	funcPtr complains_[SIZE_OF_COMPLAINS];
 };
 

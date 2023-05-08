@@ -11,17 +11,15 @@
 #define COLOR_CYAN    "\x1b[36m"
 #define COLOR_RESET   "\x1b[0m"
 
-using namespace std;
-
 class Weapon {
 public:
-	Weapon(string type) : type_(type) {};
+	Weapon(std::string type);
 	~Weapon();
 
-	const string &getType();
-	void setType(string newType);
+	const std::string &getType();
+	void setType(std::string newType);
 
 private:
 	// A private attribute type, which is a string.
-	string type_;
+	std::string type_;
 };

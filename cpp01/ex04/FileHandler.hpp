@@ -4,22 +4,20 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
-
 class FileHandler {
 public:
-	FileHandler(const string &filename);
+	FileHandler(const std::string &filename);
 	~FileHandler();
 
-	ifstream &get_ifs();
-	ofstream &get_ofs();
-	void set_ifs(const string &filename);
-	void set_ofs(const string &filename);
+	std::ifstream &get_ifs();
+	std::ofstream &get_ofs();
+	void set_ifs(const std::string &filename);
+	void set_ofs(const std::string &filename);
 
 private:
-	ifstream ifs_;
-	ofstream ofs_;
+	std::ifstream ifs_;
+	std::ofstream ofs_;
 };
 
-bool is_file(const string &inputFilePath);
-bool can_open_file(const string &inputFilePath);
+bool is_file(const std::string &inputFilePath);
+bool can_open_file(const std::string &inputFilePath);

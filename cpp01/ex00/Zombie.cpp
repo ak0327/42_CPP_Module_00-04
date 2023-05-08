@@ -9,24 +9,24 @@
 #define COLOR_RESET   "\x1b[0m"
 
 
-Zombie::Zombie(string name) {
+Zombie::Zombie(std::string name) {
 	name_ = name;
-	cout << COLOR_BLUE << name_ << " created" << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << name_ << " created" << COLOR_RESET << std::endl;
 }
 
 Zombie::~Zombie() {
-	cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << std::endl;
 }
 
 void Zombie::announce() {
-	cout << COLOR_RED << name_ << ": BraiiiiiiinnnzzzZ..." << COLOR_RESET << endl;
+	std::cout << COLOR_RED << name_ << ": BraiiiiiiinnnzzzZ..." << COLOR_RESET << std::endl;
 }
 
-void Zombie::randomChump(string name) {
+void Zombie::randomChump(std::string name) {
 	Zombie newZombie = Zombie(name);
 	newZombie.announce();
 }
 
-Zombie *newZombie(string name) {
+Zombie *newZombie(std::string name) {
 	return (new Zombie(name));
 }

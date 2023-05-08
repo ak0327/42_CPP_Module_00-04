@@ -28,28 +28,28 @@ Harl::Harl() {
 Harl::~Harl() {}
 
 void Harl::debug() {
-	cout << COLOR_GREEN << MSG_DEBUG << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << MSG_DEBUG << COLOR_RESET << std::endl;
 }
 
 void Harl::info() {
-	cout << COLOR_YELLOW << MSG_INFO << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << MSG_INFO << COLOR_RESET << std::endl;
 }
 
 void Harl::warning() {
-	cout << COLOR_BLUE << MSG_WARNING << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << MSG_WARNING << COLOR_RESET << std::endl;
 }
 
 void Harl::error() {
-	cout << COLOR_MAGENTA << MSG_ERROR << COLOR_RESET << endl;
+	std::cout << COLOR_MAGENTA << MSG_ERROR << COLOR_RESET << std::endl;
 }
 
-void Harl::complain(string level) {
+void Harl::complain(std::string level) {
 	for (int i=0; i<SIZE_OF_COMPLAINS; i++) {
 		if (level == levels[i]) {
 			(this->*complains_[i])();
 			return ;
 		}
 	}
-	throw invalid_argument("[Error] Invalid argument. Input following Levels:"
+	throw std::invalid_argument("[Error] Invalid argument. Input following Levels:"
 						   " DEBUG / INFO / WARNING / ERROR");
 }
