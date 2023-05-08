@@ -6,7 +6,7 @@
 class DiamondTrap : public ScavTrap, public FragTrap {
 public:
 	DiamondTrap();
-	DiamondTrap(const string &name);
+	DiamondTrap(const std::string &name);
 	DiamondTrap(const DiamondTrap &diamondTrap);
 	~DiamondTrap();
 	DiamondTrap &operator=(const DiamondTrap &diamondTrap);
@@ -16,6 +16,6 @@ public:
 private:
 	// DiamondTrap class will have a name private attribute
 	// same variable’s name than the one in the ClapTrap base class.
-	string name_;
+	std::string name_;
 
 };

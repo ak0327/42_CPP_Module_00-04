@@ -3,8 +3,6 @@
 #include <iostream>
 #include <limits>
 
-using namespace std;
-
 int main() {
 	{
 		ScavTrap scavTrap = ScavTrap("Dog"); scavTrap.printStatus();
@@ -19,7 +17,7 @@ int main() {
 		// can't action
 		scavTrap.beRepaired(100); scavTrap.printStatus();
 		scavTrap.takeDamage(100); scavTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ScavTrap scavTrap = ScavTrap("Lion"); scavTrap.printStatus();
@@ -34,7 +32,7 @@ int main() {
 		scavTrap.guardGate();
 		scavTrap.beRepaired(100); scavTrap.printStatus();
 		scavTrap.takeDamage(100); scavTrap.printStatus();
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ScavTrap foo = ScavTrap("Foo");
@@ -58,7 +56,7 @@ int main() {
 		bar.printStatus();
 
 		bar.attack_on(foo);
-		cout << endl;
+		std::cout << std::endl;
 	}
 	{
 		ScavTrap foo = ScavTrap("Foo");
@@ -93,7 +91,7 @@ int main() {
 		bar.guardGate();
 
 		bar.attack_on(foo);
-		cout << endl;
+		std::cout << std::endl;
 	}
 //	system("leaks a.out");
 	return 0;

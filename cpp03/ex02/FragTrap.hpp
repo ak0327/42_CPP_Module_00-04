@@ -5,7 +5,7 @@ class FragTrap : public ClapTrap {
 public:
 	// construction and destruction messages must be different
 	FragTrap();
-	FragTrap(const string &name);
+	FragTrap(const std::string &name);
 	FragTrap(const FragTrap &fragTrap);
 	~FragTrap();
 	FragTrap &operator=(const FragTrap &fragTrap);

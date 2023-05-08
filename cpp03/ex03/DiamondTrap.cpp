@@ -20,7 +20,7 @@ DiamondTrap::DiamondTrap() {
 	set_hp(FragTrap::get_hp());
 	set_ep(ScavTrap::get_ep());
 	set_ad(FragTrap::get_ad());
-	cout << COLOR_GREEN << "DiamondTrap default constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "DiamondTrap default constructor called" << COLOR_RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const std::string &name) {
@@ -29,7 +29,7 @@ DiamondTrap::DiamondTrap(const std::string &name) {
 	set_hp(FragTrap::get_hp());
 	set_ep(ScavTrap::get_ep());
 	set_ad(FragTrap::get_ad());
-	cout << COLOR_GREEN << "DiamondTrap constructor called  name:" << name << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "DiamondTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) {
@@ -39,7 +39,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) {
 }
 
 DiamondTrap::~DiamondTrap() {
-	cout << COLOR_RED << "DiamondTrap destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_RED << "DiamondTrap destructor called" << COLOR_RESET << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
@@ -56,8 +56,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
 
 // This member function will display both its name and its ClapTrap name.
 void DiamondTrap::whoAmI() {
-	cout << COLOR_MAGENTA <<
+	std::cout << COLOR_MAGENTA <<
 	"[WhoAmI] name:" << name_ <<
 	", ClapTrap name:" << ClapTrap::get_name() <<
-	COLOR_RESET << endl;
+	COLOR_RESET << std::endl;
 }
