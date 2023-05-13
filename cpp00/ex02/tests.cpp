@@ -17,27 +17,41 @@ int		main( void ) {
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
-	int	const				amounts[]	= {
+	int	const	amounts[]	= {
 			42,
 			54,
 			957,
 			432,
 			1234,
 			0,
-			754
-			, 16576 };
+			754,
+			16576 };
 
 	//これは関数？
+	// amounts_size = amounts.size = 8
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
 
 	// ここでaccount_tがamountsを元に初期化されているはず？引数は...??
 	//vector<t> accounts_t[8]ができた
+	// accounts(amounts, amounts+amounts_size) とは？？
+	//  vectorの初期化でパラメータ2つ渡すとか？→ (要素数、値)
+	//    account[amounts]
+	//
+	// Account( int initial_deposit );
+	// 
+	// amounts + amouts_size ?? 
+	//  amouts_size     : 8
+	//  sizeof(amounts) : 32
+	//  sizeof(int)     : 4
+
+	// ammountsをammounts_size分っぽいが...
+
 	accounts_t				accounts( amounts, amounts + amounts_size );
 
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
 
-	int	const			d[]			= {
+	int	const	d[]	= {
 			5,
 			765,
 			564,
@@ -77,6 +91,8 @@ int		main( void ) {
 	}
 
 	Account::displayAccountsInfos();
+
+	
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
@@ -87,6 +103,8 @@ int		main( void ) {
 	}
 
 	Account::displayAccountsInfos();
+
+
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 	return 0;
 }
