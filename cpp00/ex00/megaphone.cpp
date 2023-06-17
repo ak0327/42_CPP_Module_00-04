@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 
 std::string trim(std::string str) {
@@ -10,7 +11,7 @@ std::string trim(std::string str) {
 
 std::string str_toupper(std::string &str) {
 	for (size_t i=0; i<str.size(); i++) {
-		str.at(i) = toupper(str.at(i));
+		str.at(i) = std::toupper(str.at(i));
 	}
 	return (str);
 }
@@ -35,9 +36,9 @@ int	main(int argc, char **argv) {
 		}
 		if (!ans.empty()) {
 			std::cout << ans << std::endl;
-			return (0);
+			return (EXIT_SUCCESS);
 		}
 	}
 	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (1);
+	return (EXIT_FAILURE);
 }
