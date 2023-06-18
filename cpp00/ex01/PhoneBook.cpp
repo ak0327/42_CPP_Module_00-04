@@ -23,12 +23,12 @@ void PhoneBook::add() {
 										   "NICKNAME    ",
 										   "PHONE NUMBER",
 										   "SECRET      "};
-	std::cout << COLOR_BLUE"# ***** [ADD] Add new contact to phonebook *****"COLOR_RESET<< std::endl;
+	std::cout << COLOR_BLUE "# ***** [ADD] Add new contact to phonebook *****" COLOR_RESET<< std::endl;
 	for (int i=0; i<NUM_OF_INPUT; i++)
 	{
 		while (true)
 		{
-			std::cout << COLOR_BLUE"## " << item_str[i] << " : "COLOR_RESET << std::ends;
+			std::cout << COLOR_BLUE "## " << item_str[i] << " : " COLOR_RESET << std::ends;
 			if (!getline(std::cin, string_arr[i])) {
 				std::cout << "input ^D, exit" << std::endl;
 				exit(0) ;
@@ -40,12 +40,12 @@ void PhoneBook::add() {
 			}
 			if (string_arr[i].empty())
 			{
-				std::cout << "[Error] : Can't have EMPTY" << std::endl;
+				std::cout << COLOR_RED "[Error] : Can't have EMPTY" COLOR_RESET << std::endl;
 				continue ;
 			}
 			if (i == PHONE_NUMBER_IDX && !is_str_digit(string_arr[i]))
 			{
-				std::cout << COLOR_YELLOW"## [ERROR] : Phone number required ONLY DIGIT"COLOR_RESET << std::endl;
+				std::cout << COLOR_RED "## [ERROR] : Phone number required ONLY DIGIT" COLOR_RESET << std::endl;
 				continue ;
 			}
 			break ;
@@ -65,11 +65,11 @@ void PhoneBook::add() {
 void PhoneBook::search() {
 	std::string	index_str;
 
-	std::cout << COLOR_MAGENTA"#"COLOR_RESET << std::endl;
-	std::cout << COLOR_MAGENTA"# ***** [SEARCH] Search contact from phonebook *****"COLOR_RESET << std::endl;
+	std::cout << COLOR_MAGENTA "#" COLOR_RESET << std::endl;
+	std::cout << COLOR_MAGENTA "# ***** [SEARCH] Search contact from phonebook *****" COLOR_RESET << std::endl;
 
 	if (num_of_register == 0) {
-		std::cout << COLOR_MAGENTA"# No contact registered"COLOR_RESET << std::endl;
+		std::cout << COLOR_MAGENTA "# No contact registered" COLOR_RESET << std::endl;
 		return ;
 	}
 
@@ -77,13 +77,13 @@ void PhoneBook::search() {
 
 	while (true)
 	{
-		std::cout << COLOR_MAGENTA"# Input index to display detail >> "COLOR_RESET << std::ends;
+		std::cout << COLOR_MAGENTA "# Input index to display detail >> " COLOR_RESET << std::ends;
 		if (!getline(std::cin, index_str)) {
 			std::cout << "# ^D" << std::endl;
 			return ;
 		}
 		if (index_str == "EXIT") {
-			std::cout << COLOR_MAGENTA"# EXIT from SEARCH ..."COLOR_RESET << std::endl;
+			std::cout << COLOR_MAGENTA "# EXIT from SEARCH ..." COLOR_RESET << std::endl;
 			return ;
 		}
 		if (detail_display_by_display_index(index_str) == SUCCESS)
@@ -129,7 +129,7 @@ void PhoneBook::display() const {
 	start_idx = (num_of_register < MAXIMUM_SIZE) ? 0 : (num_of_register - MAXIMUM_SIZE);
 	for (int i=0; i<std::min(num_of_register, MAXIMUM_SIZE); i++) {
 		arr_idx = (i + start_idx) % MAXIMUM_SIZE;
-		std::cout << COLOR_CYAN" |" << std::ends;
+		std::cout << COLOR_CYAN " |" << std::ends;
 		index_str = ft_to_string(i); //display_index != arr_idx
 	std::cout << get_valid_width_string(index_str) << std::ends;
 		std::cout << "|" << std::ends;
@@ -141,7 +141,7 @@ void PhoneBook::display() const {
 		std::cout << "|" << std::ends;
 		nickname = contact_arr[arr_idx].get_nickname();
 		std::cout << get_valid_width_string(nickname) << std::ends;
-		std::cout << "|"COLOR_RESET << std::endl;
+		std::cout << "|" COLOR_RESET << std::endl;
 
 	}
 	display_row_delim();
@@ -163,7 +163,7 @@ int PhoneBook::detail_display_by_display_index(const std::string &search_index) 
 			return (SUCCESS);
 		}
 	}
-	std::cout << COLOR_RED"# Invalid index"COLOR_RESET << std::endl;
+	std::cout << COLOR_RED "# Invalid index" COLOR_RESET << std::endl;
 	return (FAILURE);
 }
 
@@ -195,13 +195,13 @@ std::string PhoneBook::get_valid_width_string(const std::string &str) const {
 }
 
 void PhoneBook::display_row_delim() const {
-	std::cout << COLOR_CYAN" + -------- + -------- + -------- + -------- +"COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN " + -------- + -------- + -------- + -------- +" COLOR_RESET << std::endl;
 }
 
 void	PhoneBook::display_header() const {
-	std::cout << COLOR_CYAN" + -------- + -------- + -------- + -------- +"COLOR_RESET << std::endl;
-	std::cout << COLOR_CYAN" |   Index  | FirstName| LastName | Nickname |"COLOR_RESET << std::endl;
-	std::cout << COLOR_CYAN" # ======== # ======== # ======== # ======== #"COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN " + -------- + -------- + -------- + -------- +" COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN " |   Index  | FirstName| LastName | Nickname |" COLOR_RESET << std::endl;
+	std::cout << COLOR_CYAN " # ======== # ======== # ======== # ======== #" COLOR_RESET << std::endl;
 }
 
 std::string PhoneBook::trim(std::string str) const {
@@ -233,16 +233,3 @@ std::string PhoneBook::ft_to_string(int num) const {
 	}
 	return sign + ret;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
