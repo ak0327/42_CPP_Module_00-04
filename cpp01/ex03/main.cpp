@@ -45,6 +45,6 @@ int main() {
 		humanB.attack();
 	}
 	std::cout << std::endl;
-	system("leaks a.out");
+//	system("leaks a.out");
 	return 0;
 }

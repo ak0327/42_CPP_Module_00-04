@@ -42,6 +42,6 @@ int main() {
 	std::string chumpC = "huga";
 	test_zombie_horder(-3, nameC, chumpC);
 
-	system("leaks a.out");
+//	system("leaks a.out");
 	return 0;
 }
