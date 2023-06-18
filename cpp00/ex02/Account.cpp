@@ -111,6 +111,7 @@ void Account::makeDeposit(int deposit) {
     _amount += deposit;
     _nbDeposits++;
     _totalAmount += deposit;
+    _totalNbDeposits++;
 
     // display amount
     std::cout << "amount:" << checkAmount() << ";";
@@ -142,6 +143,7 @@ bool Account::makeWithdrawal(int withdrawal) {
     _amount -= withdrawal;
     _nbWithdrawals++;
     _totalAmount -= withdrawal;
+    _totalNbWithdrawals++;
 
     // display amount
     std::cout << "amount:" << checkAmount() << ";";
@@ -169,7 +171,7 @@ void Account::displayStatus(void) const {
     std::cout << "amount:" << checkAmount() << ";";
 
     // display deposit
-    std::cout << "deposit:" << _nbDeposits << ";";
+    std::cout << "deposits:" << _nbDeposits << ";";
 
     // display withdrawals
     std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
