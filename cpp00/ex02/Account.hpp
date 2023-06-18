@@ -21,10 +21,11 @@ public:
 
 	typedef Account		t;
 
+    // for static member variables
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
-	static int	getNbDeposits( void );
-	static int	getNbWithdrawals( void );
+	static int	getTotalNbDeposits( void );
+	static int	getTotalNbWithdrawals( void );
 	static void	displayAccountsInfos( void );
 
 	Account( int initial_deposit );
@@ -38,6 +39,7 @@ public:
 
 private:
 
+    // staticは共通
 	static int	_nbAccounts;
 	static int	_totalAmount;
 	static int	_totalNbDeposits;

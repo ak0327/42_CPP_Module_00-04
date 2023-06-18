@@ -23,7 +23,9 @@ void ReplaceHandler::execReplace(const std::string &toBeReplaced,
 	}
 }
 
-std::string ReplaceHandler::get_replaced_line(std::string src, const std::string &toBeReplaced, const std::string &toReplace) const {
+std::string ReplaceHandler::get_replaced_line(std::string src,
+											  const std::string &toBeReplaced,
+											  const std::string &toReplace) const {
 	size_t		i, j;
 	std::string	line, tmp;
 

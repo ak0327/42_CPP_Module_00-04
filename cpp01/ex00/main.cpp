@@ -31,8 +31,7 @@ int main() {
 		std::cout << std::endl;
 
 	}
-
-	system("leaks a.out");
+//	system("leaks a.out");
 }
 
 

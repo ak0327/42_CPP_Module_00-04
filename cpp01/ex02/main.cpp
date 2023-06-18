@@ -26,4 +26,5 @@ int main() {
 	strREF = "42Tokyo";
 	print_strs(strVAR, strPTR, strREF);
 
+	return 0;
 }
