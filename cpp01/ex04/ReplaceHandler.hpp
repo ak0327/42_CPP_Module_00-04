@@ -11,8 +11,8 @@ public:
 
 	FileHandler &get_file();
 
-	void execReplace(std::string &toBeReplaced,
-					 std::string &toReplace);
+	void execReplace(const std::string &toBeReplaced,
+					 const std::string &toReplace);
 
 private:
 	FileHandler &file_;

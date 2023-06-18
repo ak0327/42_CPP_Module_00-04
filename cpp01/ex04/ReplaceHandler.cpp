@@ -7,8 +7,8 @@ FileHandler &ReplaceHandler::get_file() {
 	return file_;
 }
 
-void ReplaceHandler::execReplace(std::string &toBeReplaced,
-								 std::string &toReplace) {
+void ReplaceHandler::execReplace(const std::string &toBeReplaced,
+								 const std::string &toReplace) {
 	std::string	content;
 	std::string replaced;
 
@@ -23,7 +23,9 @@ void ReplaceHandler::execReplace(std::string &toBeReplaced,
 	}
 }
 
-std::string ReplaceHandler::get_replaced_line(std::string src, std::string &toBeReplaced, std::string &toReplace) const {
+std::string ReplaceHandler::get_replaced_line(std::string src,
+											  std::string &toBeReplaced,
+											  std::string &toReplace) const {
 	size_t		i, j;
 	std::string	line, tmp;
 
