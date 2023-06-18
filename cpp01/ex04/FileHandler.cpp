@@ -54,6 +54,7 @@ bool	is_file(const std::string &inputFilePath) {
 	return res;
 }
 
+// todo: ifs.fail()
 bool	can_open_file(const std::string &inputFilePath) {
 	std::ifstream	ifs;
 	bool			res;
