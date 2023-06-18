@@ -64,10 +64,13 @@ void Harl::filter(std::string level) {
 	switch (i) {
 		case DEBUG_IDX:
 			debug();
+            /* fall through */
 		case INFO_IDX:
 			info();
+            /* fall through */
 		case WARNING_IDX:
 			warning();
+            /* fall through */
 		case ERROR_IDX:
 			error();
 			return ;
