@@ -1,6 +1,6 @@
 #include "FileHandler.hpp"
 
-FileHandler::FileHandler(const std::string &filename) {
+FileHandler::FileHandler(std::string &filename) {
 	set_ifs(filename);
 	set_ofs(filename);
 }
@@ -10,7 +10,7 @@ FileHandler::~FileHandler() {
 	ofs_.close();
 }
 
-void FileHandler::set_ifs(const std::string &filename) {
+void FileHandler::set_ifs(std::string &filename) {
 	if (!is_file(filename) || !can_open_file(filename)) {
 		throw std::invalid_argument("[Error] invalid filename");
 	}
@@ -21,7 +21,7 @@ void FileHandler::set_ifs(const std::string &filename) {
 	}
 }
 
-void FileHandler::set_ofs(const std::string &filename) {
+void FileHandler::set_ofs(std::string &filename) {
 	std::string outputFileName;
 	outputFileName = filename + ".replace";
 
@@ -39,7 +39,7 @@ std::ofstream &FileHandler::get_ofs() {
 	return ofs_;
 }
 
-bool	is_file(const std::string &inputFilePath) {
+bool	is_file(std::string &inputFilePath) {
 	std::string		directoryPath;
 	std::ifstream	ifs;
 	bool			res;
@@ -54,7 +54,7 @@ bool	is_file(const std::string &inputFilePath) {
 	return res;
 }
 
-bool	can_open_file(const std::string &inputFilePath) {
+bool	can_open_file(std::string &inputFilePath) {
 	std::ifstream	ifs;
 	bool			res;
 
