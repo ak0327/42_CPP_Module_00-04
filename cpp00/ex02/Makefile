@@ -5,8 +5,7 @@ CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 NAME		= account
 
 SRCS		= Account.cpp \
-			  test.cpp \
-			  main.cpp
+			  tests.cpp
 
 OBJ_DIR		= objs
 OBJ			= $(SRCS:%.cpp=%.o)
@@ -32,7 +31,7 @@ fclean	: clean
 
 re		: fclean all
 
-run		: re
+run		: all
 	./$(NAME)
 
 .PHONY	: all clean fclean re run

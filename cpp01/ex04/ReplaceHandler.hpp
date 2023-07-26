@@ -18,7 +18,7 @@ private:
 	FileHandler &file_;
 
 	std::string get_replaced_line(std::string src,
-								  std::string &toBeReplaced,
-								  std::string &toReplace) const;
+								  const std::string &toBeReplaced,
+								  const std::string &toReplace) const;
 };
 

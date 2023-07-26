@@ -27,11 +27,20 @@ int		main( void ) {
 			754
 			, 16576 };
 
-	//これは関数？
-	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
+	// direct initialization
+    // size_t const amounts_size = sizeof(amounts) / sizeof(int);
+	size_t const            amounts_size( sizeof(amounts) / sizeof(int) );
 
 	// ここでaccount_tがamountsを元に初期化されているはず？引数は...??
 	//vector<t> accounts_t[8]ができた
+
+    // accounts_t accounts;
+    // for (size_t i=0; i<amounts_size; i++) {
+    //  accounts.push_back(amounts[i]);
+    // }
+    // first = amounts, amountsは先頭を指すポインタ = amounts[0]
+    // last=amounts+amounts_size                 = amounts[amounts_size]
+    // amounts[]の要素を使用し、accounts[i]を初期化する
 	accounts_t				accounts( amounts, amounts + amounts_size );
 
 	accounts_t::iterator	acc_begin	= accounts.begin();
