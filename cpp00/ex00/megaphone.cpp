@@ -1,44 +1,68 @@
-#include <cstdlib>
 #include <iostream>
 
-std::string trim(std::string str) {
-	const std::string space = " ";
+#define WHITE_SPACE_CHR	' '
+#define WHITE_SPACE_STR	" "
 
-	str.erase(str.find_last_not_of(space) + 1);
-	str.erase(0, str.find_first_not_of(space));
-	return (str);
+static void skip_space(std::string &str, size_t &i) {
+	while (str[i] == WHITE_SPACE_CHR) {
+		i++;
+	}
 }
 
-std::string str_toupper(std::string &str) {
-	for (size_t i=0; i<str.size(); i++) {
-		str.at(i) = std::toupper(str.at(i));
+static std::string get_upper_str(std::string &str, size_t &i) {
+	std::string ret_str = "";
+	char c;
+
+	while (str[i] && str[i] != WHITE_SPACE_CHR) {
+		c = str[i];
+		if (std::islower(c))
+			c =  std::toupper(str[i]);
+		ret_str += c;
+		i++;
 	}
-	return (str);
+	return ret_str;
+}
+
+static std::string get_megaphone_str(std::string &str) {
+	std::string ret_str = "";
+	size_t i = 0;
+
+	skip_space(str, i);
+	while (str[i]) {
+		ret_str += get_upper_str(str, i);
+		skip_space(str, i);
+		if (str[i])
+			ret_str += WHITE_SPACE_STR;
+	}
+	return ret_str;
+}
+
+static const std::string get_megaphone(int argc, char **argv) {
+	std::string megaphone_str = "";
+	std::string av, str;
+
+	for (int i=1; i<argc; i++) {
+		av = argv[i];
+		str = get_megaphone_str(av);
+		if (str.empty())
+			continue ;
+		if (!megaphone_str.empty())
+			megaphone_str += WHITE_SPACE_STR;
+		megaphone_str += str;
+	}
+	return megaphone_str;
 }
 
 int	main(int argc, char **argv) {
+	std::string megaphone_str;
+
 	if (argc > 1) {
-		std::string str, ans;
-
-		for (int i=1; i<argc; i++) {
-			str = trim(argv[i]);
-
-			if (str.empty()) {
-				continue ;
-			}
-
-			str_toupper(str);
-
-			if (!ans.empty()) {
-				ans += " ";
-			}
-			ans += str;
-		}
-		if (!ans.empty()) {
-			std::cout << ans << std::endl;
-			return (EXIT_SUCCESS);
+		megaphone_str = get_megaphone(argc, argv);
+		if (!megaphone_str.empty()) {
+			std::cout << megaphone_str << std::endl;
+			return EXIT_SUCCESS;
 		}
 	}
 	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (EXIT_FAILURE);
+	return EXIT_FAILURE;
 }

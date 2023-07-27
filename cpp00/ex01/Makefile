@@ -1,6 +1,6 @@
 CC			= c++
 
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
 
 NAME		= phonebook
 

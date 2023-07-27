@@ -19,10 +19,10 @@ void PhoneBook::add() {
 	int			register_idx;
 	std::string	string_arr[NUM_OF_INPUT];
 	const std::string item_str[NUM_OF_INPUT] = {"FIRST NAME  ",
-										   "LAST NAME   ",
-										   "NICKNAME    ",
-										   "PHONE NUMBER",
-										   "SECRET      "};
+												"LAST NAME   ",
+												"NICKNAME    ",
+												"PHONE NUMBER",
+												"SECRET      "};
 	std::cout << COLOR_BLUE "# ***** [ADD] Add new contact to phonebook *****" COLOR_RESET<< std::endl;
 	for (int i=0; i<NUM_OF_INPUT; i++)
 	{
@@ -54,10 +54,10 @@ void PhoneBook::add() {
 	num_of_register++;
 	register_idx = (num_of_register - 1) % MAXIMUM_SIZE;
 	contact_arr[register_idx].SetData(string_arr[FIRST_NAME_IDX],
-									string_arr[LAST_NAME_IDX],
-									string_arr[NICKNAME_IDX],
-									string_arr[PHONE_NUMBER_IDX],
-									string_arr[SECRET_IDX]);
+									  string_arr[LAST_NAME_IDX],
+									  string_arr[NICKNAME_IDX],
+									  string_arr[PHONE_NUMBER_IDX],
+									  string_arr[SECRET_IDX]);
 }
 
 
@@ -131,7 +131,7 @@ void PhoneBook::display() const {
 		arr_idx = (i + start_idx) % MAXIMUM_SIZE;
 		std::cout << COLOR_CYAN " |" << std::ends;
 		index_str = ft_to_string(i); //display_index != arr_idx
-	std::cout << get_valid_width_string(index_str) << std::ends;
+		std::cout << get_valid_width_string(index_str) << std::ends;
 		std::cout << "|" << std::ends;
 		first_name = contact_arr[arr_idx].get_first_name();
 		std::cout << get_valid_width_string(first_name) << std::ends;

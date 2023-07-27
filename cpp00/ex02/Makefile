@@ -1,6 +1,6 @@
 CC			= c++
 
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
 
 NAME		= account
 
@@ -27,7 +27,7 @@ clean	:
 	rm -rf $(OBJ_DIR)
 
 fclean	: clean
-	rm $(NAME)
+	$(RM) $(NAME)
 
 re		: fclean all
 

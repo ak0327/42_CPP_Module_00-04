@@ -21,7 +21,7 @@ public:
 
 	typedef Account		t;
 
-    // for static member variables
+	// for static member variables
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getTotalNbDeposits( void );
@@ -39,7 +39,7 @@ public:
 
 private:
 
-    // staticは共通
+	// staticは共通
 	static int	_nbAccounts;
 	static int	_totalAmount;
 	static int	_totalNbDeposits;

@@ -21,11 +21,11 @@ Contact::Contact(std::string first_name,
 				 std::string nickname,
 				 std::string phone_number,
 				 std::string secret) :
-	first_name_(first_name),
-	last_name_(last_name),
-	nickname_(nickname),
-	phone_number_(phone_number),
-	secret_(secret) {
+		first_name_(first_name),
+		last_name_(last_name),
+		nickname_(nickname),
+		phone_number_(phone_number),
+		secret_(secret) {
 }
 
 void Contact::SetData(std::string first_name,
