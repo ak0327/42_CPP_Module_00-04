@@ -17,8 +17,6 @@ public:
 
 	void filter(std::string level);
 
-	typedef void (Harl::*funcPtr)();
-
 private:
 	void debug(void);
 	void info(void);
@@ -26,7 +24,4 @@ private:
 	void error(void);
 
 	std::string levels[SIZE_OF_COMPLAINS];
-	funcPtr complains_[SIZE_OF_COMPLAINS];
 };
-
-

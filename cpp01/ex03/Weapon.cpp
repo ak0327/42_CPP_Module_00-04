@@ -14,4 +14,3 @@ void Weapon::setType(std::string newType) {
 	std::cout << "change [" << getType() << "] -> [" << newType << "]" << std::endl;
 	type_ = newType;
 }
-

@@ -9,7 +9,7 @@
 #define COLOR_RESET   "\x1b[0m"
 
 Zombie::Zombie() {
-	name_ = "";
+	name_ = "initial name";
 }
 
 Zombie::Zombie(std::string name) {
@@ -18,7 +18,7 @@ Zombie::Zombie(std::string name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << std::endl;
+	std::cout << COLOR_GREEN << name_ << " destroyed...\n" << COLOR_RESET << std::endl;
 }
 
 void Zombie::announce() {
@@ -34,9 +34,9 @@ Zombie *zombieHorde(int N, std::string name) {
 	if (N <= 0) {
 		throw std::invalid_argument("[Error] invalid argument: N <= 0");
 	}
-	Zombie *zombies = new Zombie[N];
-	for (int i=0; i<N; i++) {
-		zombies[i] = Zombie(name); //デフォルトコンストラクタを上書き->デストラクタが呼ばれる
+	Zombie *zombies = new Zombie[N]; // called default constructor
+    for (int i=0; i<N; i++) {
+		zombies[i] = Zombie(name); //overwrite default constructor -> called destructor
 	}
 	return (zombies);
 }

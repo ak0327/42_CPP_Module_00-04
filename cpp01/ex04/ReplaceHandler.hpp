@@ -21,4 +21,3 @@ private:
 								  const std::string &toBeReplaced,
 								  const std::string &toReplace) const;
 };
-

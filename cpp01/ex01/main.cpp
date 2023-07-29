@@ -42,6 +42,7 @@ int main() {
 	std::string chumpC = "huga";
 	test_zombie_horder(-3, nameC, chumpC);
 
-//	system("leaks a.out");
+    std::cout << std::endl;
+	system("leaks -q a.out");
 	return 0;
 }

@@ -1,8 +1,7 @@
 #include <iostream>
 #include "Harl.hpp"
 
-
-void checkArgument(int argc) {
+void checkArgCount(int argc) {
 	if (argc != 2) {
 		throw std::invalid_argument("[Error] Invalid argument."
 							   " Input as: $ ./a.out <Complain Level>\n"
@@ -12,7 +11,7 @@ void checkArgument(int argc) {
 
 int main(int argc, char **argv) {
 	try {
-		checkArgument(argc);
+		checkArgCount(argc);
 		Harl harl = Harl();
 		harl.complain(argv[1]);
 	}

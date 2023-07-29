@@ -13,7 +13,6 @@ int main() {
 		zombieA.randomChump(nameB);
 
 		std::cout << "\n=== [zombieA] destroy ===" << std::endl;
-		std::cout << std::endl;
 	}
 	{
 		std::string nameC = "zombieC";
@@ -21,9 +20,11 @@ int main() {
 
 		std::cout << "\n=== [zombieC] create by newZombie ===" << std::endl;
 		Zombie *zombieC = newZombie(nameC);
+
 		std::cout << "\n=== [zombieC] announce ===" << std::endl;
 		zombieC->announce();
-		std::cout << "\n=== [zombieC] random Chymp \"zombieD\" ===" << std::endl;
+
+		std::cout << "\n=== [zombieC] random Chump \"zombieD\" ===" << std::endl;
 		zombieC->randomChump(nameD);
 
 		std::cout << "\n=== [zombieC] delete ===" << std::endl;
@@ -31,7 +32,5 @@ int main() {
 		std::cout << std::endl;
 
 	}
-//	system("leaks a.out");
+	system("leaks -q a.out");
 }
-
-

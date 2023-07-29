@@ -1,7 +1,7 @@
 NAME		= a.out
 
 CC			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -g -fsanitize=address
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
 
 SRCS		= main.cpp \
 			  FileHandler.cpp \

@@ -14,11 +14,6 @@
 #define MSG_ERROR		"This is unacceptable! I want to speak to the manager now."
 
 Harl::Harl() {
-	complains_[DEBUG_IDX] = &Harl::debug;
-	complains_[INFO_IDX] = &Harl::info;
-	complains_[WARNING_IDX] = &Harl::warning;
-	complains_[ERROR_IDX] = &Harl::error;
-
 	levels[DEBUG_IDX] = "DEBUG";
 	levels[INFO_IDX] = "INFO";
 	levels[WARNING_IDX] = "WARNING";

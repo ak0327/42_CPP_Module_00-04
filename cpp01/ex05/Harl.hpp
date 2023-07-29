@@ -27,5 +27,3 @@ private:
 	std::string levels[SIZE_OF_COMPLAINS];
 	funcPtr complains_[SIZE_OF_COMPLAINS];
 };
-
-

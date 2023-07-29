@@ -15,7 +15,7 @@ Zombie::Zombie(std::string name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << COLOR_GREEN << name_ << " destroyed..." << COLOR_RESET << std::endl;
+	std::cout << COLOR_GREEN << name_ << " destroyed...\n" << COLOR_RESET << std::endl;
 }
 
 void Zombie::announce() {
