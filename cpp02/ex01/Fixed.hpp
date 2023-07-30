@@ -29,6 +29,7 @@ public:
 
 	/* ex01 Additional func */
 	// converts the fixed-point value to a floating-point value.
+	// const : method does not change the class state
 	float	toFloat(void) const;
 
 	/* ex01 Additional func */

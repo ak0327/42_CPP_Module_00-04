@@ -106,26 +106,19 @@ Fixed Fixed::operator-(Fixed const &obj) {
 }
 
 Fixed Fixed::operator*(Fixed const &obj) {
-	setRawBits(static_cast<int>(
-			(static_cast<long long>(getRawBits()) * obj.getRawBits())
-			>> fractionalBits_));
+	long tmp = static_cast<long>(getRawBits()) * static_cast<long>(obj.getRawBits());
+	tmp /= (1 << fractionalBits_);
+	setRawBits(static_cast<int>(tmp));
 	return *this;
 }
-
-//Fixed Fixed::operator*(Fixed const &obj) {
-//	fixedPointNumber_ =
-//			static_cast<int>((
-//					static_cast<long long>(fixedPointNumber_) * obj.fixedPointNumber_)
-//					>> fractionalBits_);
-//	return *this;
-//}
 
 Fixed Fixed::operator/(Fixed const &obj) {
 	if (obj.getRawBits() == 0) {
 		throw std::runtime_error("Division by zero");
 	}
-	long long div = static_cast<long long>(getRawBits()) << fractionalBits_;
-	setRawBits(static_cast<int>(div / obj.getRawBits()));
+	long tmp = static_cast<long>(getRawBits()) << fractionalBits_;
+	tmp /= static_cast<long>(obj.getRawBits());
+	setRawBits(static_cast<int>(tmp));
 	return *this;
 }
 
@@ -184,12 +177,12 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
 
 // converts the fixed-point value to a floating-point value.
 float Fixed::toFloat() const {
-	return (static_cast<float>(getRawBits()) / (1 << fractionalBits_));
+	return static_cast<float>(getRawBits()) / (1 << fractionalBits_);
 }
 
 // converts the fixed-point value to an integer value.
 int Fixed::toInt() const {
-	return (getRawBits() >> fractionalBits_);
+	return roundf(static_cast<float>(fixedPointNumber_) / (1 << fractionalBits_));
 }
 
 // inserts a floating-point representation of the fixed-point number

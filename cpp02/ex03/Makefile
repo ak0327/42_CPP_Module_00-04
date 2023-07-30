@@ -1,7 +1,7 @@
 NAME		= a.out
 
 CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -pedantic
 
 SRCS		= main.cpp \
 			  Fixed.cpp \
@@ -35,6 +35,6 @@ re		: fclean all
 run		: re
 	./$(NAME)
 
-.PHONY	: all clean fclean re
+.PHONY	: all clean fclean re run
 
 -include $(DEPS)

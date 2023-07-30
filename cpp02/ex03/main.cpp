@@ -58,3 +58,9 @@ int main() {
 //	system("leaks a.out");
 	return 0;
 }
+
+__attribute__((destructor))
+static void	destructor(void)
+{
+	system("leaks -q a.out");
+}

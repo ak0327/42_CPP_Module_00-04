@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Fixed.hpp"
 
 int main() {
@@ -27,6 +26,13 @@ int main() {
 	std::cout << c.getRawBits() << std::endl;
 
 	std::cout << std::endl;
-//	system("leaks a.out");
+
+//	system("leaks -q a.out");
 	return 0;
+}
+
+__attribute__((destructor))
+static void	destructor(void)
+{
+	system("leaks -q a.out");
 }

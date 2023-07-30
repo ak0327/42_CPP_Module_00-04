@@ -77,12 +77,3 @@ private:
 // inserts a floating-point representation of the fixed-point number
 // into the output stream object passed as parameter.
 std::ostream &operator<<(std::ostream &out, const Fixed &obj);
-
-
-
-
-
-
-
-
-

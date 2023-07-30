@@ -59,13 +59,13 @@ Fixed::Fixed(const float floatNum) {
 /* ex01 Additional func */
 // converts the fixed-point value to a floating-point value.
 float Fixed::toFloat() const {
-	return ((float)(fixedPointNumber_) / (1 << fractionalBits_));
+	return static_cast<float>(fixedPointNumber_) / (1 << fractionalBits_);
 }
 
 /* ex01 Additional func */
 // converts the fixed-point value to an integer value.
 int Fixed::toInt() const {
-	return (fixedPointNumber_ >> fractionalBits_);
+	return roundf(static_cast<float>(fixedPointNumber_) / (1 << fractionalBits_));
 }
 
 /* ex01 Additional func */
