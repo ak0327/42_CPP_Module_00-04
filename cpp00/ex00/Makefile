@@ -1,6 +1,6 @@
 ####################################################
 # COMPILE
-CC			= c++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 
@@ -20,10 +20,10 @@ OBJS		= $(SRCS:%.cpp=%.o)
 all		: $(NAME)
 
 $(NAME)	: $(OBJS)
-	$(CC) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 $(OBJS)	: $(SRCS)
-	$(CC) $(CXXFLAGS) -c $(SRCS)
+	$(CXX) $(CXXFLAGS) -c $(SRCS)
 
 clean	:
 	$(RM) $(OBJS)
