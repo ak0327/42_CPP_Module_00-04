@@ -10,5 +10,8 @@ public:
 	~FragTrap();
 	FragTrap &operator=(const FragTrap &fragTrap);
 
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
+
 	void highFiveGuys();
+
 };

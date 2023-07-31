@@ -1,7 +1,7 @@
 #pragma once
 #include "ClapTrap.hpp"
 
-class FragTrap : virtual public ClapTrap {
+class FragTrap : public virtual ClapTrap {
 public:
 	// construction and destruction messages must be different
 	FragTrap();
@@ -10,5 +10,8 @@ public:
 	~FragTrap();
 	FragTrap &operator=(const FragTrap &fragTrap);
 
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
+
 	void highFiveGuys();
+
 };

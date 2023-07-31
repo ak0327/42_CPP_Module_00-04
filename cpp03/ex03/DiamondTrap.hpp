@@ -10,8 +10,9 @@ public:
 	DiamondTrap(const DiamondTrap &diamondTrap);
 	~DiamondTrap();
 	DiamondTrap &operator=(const DiamondTrap &diamondTrap);
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
 
-	void whoAmI();
+	void whoAmI() const ;
 
 private:
 	// DiamondTrap class will have a name private attribute

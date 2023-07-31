@@ -13,54 +13,49 @@
 #define INIT_EP 50
 #define INIT_AD 20
 
-ScavTrap::ScavTrap() {
-	set_name("null");
+ScavTrap::ScavTrap() : ClapTrap() {
+	set_name("ScavTrapInit");
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
 	std::cout << COLOR_GREEN << "ScavTrap default constructor called" << COLOR_RESET << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string &name) {
-	set_name(name);
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
 	std::cout << COLOR_GREEN << "ScavTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
-	if (this != &scavTrap) {
-		*this = scavTrap;
-	}
+ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj)  {
+	std::cout << COLOR_GREEN << "ScavTrap copy constructor called" << COLOR_RESET << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
 	std::cout << COLOR_RED << "ScavTrap destructor called" << COLOR_RESET << std::endl;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap) {
-	if (this != &scavTrap) {
-		ScavTrap tmp = ScavTrap(scavTrap);
-		set_name(tmp.get_name());
-		set_hp(tmp.get_hp());
-		set_ep(tmp.get_ep());
-		set_ad(tmp.get_ad());
-
-	}
+ScavTrap &ScavTrap::operator=(const ScavTrap &obj) {
+	ClapTrap::operator=(obj);
+	std::cout << COLOR_GREEN << "ScavTrap copy assignment constructor called" << COLOR_RESET << std::endl;
 	return *this;
 }
 
+// attack A to B  -> B.takeDamage by A
 void ScavTrap::attack_on(ScavTrap &targetObj) {
 	if (this == &targetObj) {
+		std::cout << COLOR_RED <<
+				  "ScavTrap [Error] Can't attack themselves..." << COLOR_RESET << std::endl;
 		return ;
 	}
 	if (targetObj.get_hp() == 0) {
 		std::cout << COLOR_YELLOW <<
-			 "ScavTrap [attack] " << targetObj.get_name() <<
-			 " is already ZERO hit point" << COLOR_RESET << std::endl;
+				  "ScavTrap [attack] " << targetObj.get_name() <<
+				  " is already ZERO hit point" << COLOR_RESET << std::endl;
 		return ;
 	}
+
 	// for subject, print message
 	attack(targetObj.get_name());
 
@@ -77,15 +72,30 @@ void ScavTrap::attack(const std::string &target) {
 	// check hp
 	if (!is_actionable()) {
 		std::cout << COLOR_YELLOW <<
-			 "ScavTrap [attack] " << get_name() <<
-			 " can't action..." << COLOR_RESET << std::endl;
+				  "ScavTrap [attack] " << get_name() <<
+				  " can't action..." << COLOR_RESET << std::endl;
 	} else {
 		std::cout << COLOR_YELLOW <<
-			 "ScavTrap [attack] " << get_name() <<
-			 " attacks " << target << ", causing " <<
-			 get_ad() << " points of damage!" << COLOR_RESET << std::endl;
+				  "ScavTrap [attack] " << get_name() <<
+				  " attacks " << target << ", causing " <<
+				  get_ad() << " points of damage!" << COLOR_RESET << std::endl;
 	}
 }
+
+// duplicated...
+unsigned int ScavTrap::calc_repair_hp(unsigned int hp, unsigned int repair) {
+	unsigned int	repair_value;
+
+	if (hp >= INIT_HP)
+		repair_value = 0;
+	else if (UINT_MAX - hp >= repair) {
+		repair_value = std::min(repair, INIT_HP - hp);
+	} else {
+		repair_value = UINT_MAX - hp;
+	}
+	return hp + repair_value; // same as attack_damage
+}
+
 
 // HP == 0        : DIED
 // 0 < HP <= 10   : DANGER
@@ -101,3 +111,4 @@ void ScavTrap::guardGate() {
 	}
 	std::cout << "[" << get_name() << "'s guardGate] " << status << std::endl;
 }
+

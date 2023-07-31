@@ -18,4 +18,7 @@ public:
 	void attack_on(ScavTrap &targetObj);
 
 	void guardGate();
+
+	unsigned int calc_repair_hp(unsigned int hp, unsigned int repair);
+
 };

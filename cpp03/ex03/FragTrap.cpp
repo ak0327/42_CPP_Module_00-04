@@ -28,26 +28,39 @@ FragTrap::FragTrap(const std::string &name) {
 	std::cout << COLOR_GREEN << "FragTrap constructor called  name:" << name << COLOR_RESET << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &fragTrap) {
-	if (this != &fragTrap) {
-		*this = fragTrap;
-	}
+FragTrap::FragTrap(const FragTrap &obj) {
+	set_name(obj.get_name());
+	set_hp(obj.get_hp());
+	set_ep(obj.get_ep());
+	set_ad(obj.get_ad());
 }
 
 FragTrap::~FragTrap() {
 	std::cout << COLOR_RED << "FragTrap destructor called" << COLOR_RESET << std::endl;
 }
 
-FragTrap &FragTrap::operator=(const FragTrap &fragTrap) {
-	if (this != &fragTrap) {
-		FragTrap tmp = FragTrap(fragTrap);
-		set_name(tmp.get_name());
-		set_hp(tmp.get_hp());
-		set_ep(tmp.get_ep());
-		set_ad(tmp.get_ad());
-
+FragTrap &FragTrap::operator=(const FragTrap &obj) {
+	if (this != &obj) {
+		set_name(obj.get_name());
+		set_hp(obj.get_hp());
+		set_ep(obj.get_ep());
+		set_ad(obj.get_ad());
 	}
 	return *this;
+}
+
+// duplicated...
+unsigned int FragTrap::calc_repair_hp(unsigned int hp, unsigned int repair) {
+	unsigned int	repair_value;
+
+	if (hp >= INIT_HP)
+		repair_value = 0;
+	else if (UINT_MAX - hp >= repair) {
+		repair_value = std::min(repair, INIT_HP - hp);
+	} else {
+		repair_value = UINT_MAX - hp;
+	}
+	return hp + repair_value;
 }
 
 void FragTrap::highFiveGuys() {
