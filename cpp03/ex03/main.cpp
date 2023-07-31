@@ -1,7 +1,6 @@
 #include <iostream>
 #include "DiamondTrap.hpp"
 
-
 int main() {
 	{
 		std::cout << "-------------------- test 1 : constructor --------------------" << std::endl;
@@ -15,6 +14,45 @@ int main() {
 		std::cout << std::endl;
 
 		DiamondTrap test4; test4 = test1; test4.printStatus();
+		std::cout << std::endl;
+
+		test1.whoAmI();
+		test2.whoAmI();
+		test3.whoAmI();
+		test4.whoAmI();
+
+		test1.set_name("TEST1");
+		std::cout << std::endl;
+
+		test1.whoAmI();
+		test2.whoAmI();
+		test3.whoAmI();
+		test4.whoAmI();
+
+		test2.set_name("TEST2");
+		std::cout << std::endl;
+
+		test1.whoAmI();
+		test2.whoAmI();
+		test3.whoAmI();
+		test4.whoAmI();
+
+		test3.set_name("TEST3");
+		std::cout << std::endl;
+
+		test1.whoAmI();
+		test2.whoAmI();
+		test3.whoAmI();
+		test4.whoAmI();
+
+		test4.set_name("TEST4");
+		std::cout << std::endl;
+
+		test1.whoAmI();
+		test2.whoAmI();
+		test3.whoAmI();
+		test4.whoAmI();
+
 		std::cout << std::endl;
 
 		test1.takeDamage(1);

@@ -45,6 +45,36 @@ int main() {
 		test4.printStatus();
 		std::cout << std::endl;
 
+		test1.set_name("AAAAA");
+		test1.printStatus();
+		test2.printStatus();
+		test3.printStatus();
+		test4.printStatus();
+
+		std::cout << std::endl;
+
+		test2.set_name("BBBBB");
+		test1.printStatus();
+		test2.printStatus();
+		test3.printStatus();
+		test4.printStatus();
+
+		std::cout << std::endl;
+
+		test3.set_name("CCCCC");
+		test1.printStatus();
+		test2.printStatus();
+		test3.printStatus();
+		test4.printStatus();
+
+		std::cout << std::endl;
+
+		test4.set_name("DDDDD");
+		test1.printStatus();
+		test2.printStatus();
+		test3.printStatus();
+		test4.printStatus();
+
 		std::cout << "\n" << std::endl;
 
 	}

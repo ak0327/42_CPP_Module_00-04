@@ -19,8 +19,8 @@
 #define CLAP_SUFFIX "_clap_name"
 
 DiamondTrap::DiamondTrap() {
-	set_name("DiamondTrap");
-	ClapTrap::set_name(get_name() + CLAP_SUFFIX);
+	name_ = "DiamondTrap";
+	ClapTrap::set_name(name_ + CLAP_SUFFIX);
 	set_hp(INIT_HP);
 	set_ep(INIT_EP);
 	set_ad(INIT_AD);
@@ -38,7 +38,8 @@ DiamondTrap::DiamondTrap(const std::string &name) {
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &obj) {
-	set_name(obj.get_name());
+	name_ = obj.name_;
+	ClapTrap::set_name(name_ + CLAP_SUFFIX);
 	set_hp(obj.get_hp());
 	set_ep(obj.get_ep());
 	set_ad(obj.get_ad());
@@ -51,8 +52,8 @@ DiamondTrap::~DiamondTrap() {
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj) {
 	if (this != &obj) {
-		ClapTrap::set_name(obj.ClapTrap::get_name());
-		set_name(obj.get_name());
+		name_ = obj.name_;
+		ClapTrap::set_name(name_ + CLAP_SUFFIX);
 		set_hp(obj.get_hp());
 		set_ep(obj.get_ep());
 		set_ad(obj.get_ad());

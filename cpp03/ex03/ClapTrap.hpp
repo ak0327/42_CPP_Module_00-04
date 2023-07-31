@@ -24,7 +24,7 @@ public:
 	void attack_on(ClapTrap &targetObj);
 
 	// setter
-	void set_name(const std::string &name);
+	virtual void set_name(const std::string &name);
 	void set_hp(unsigned int update);
 	void set_ep(unsigned int update);
 	void set_ad(unsigned int update);
