@@ -9,36 +9,34 @@
 #define COLOR_RESET		"\x1b[0m"
 
 Animal::Animal() : type_("Animal") {
-	cout << COLOR_GREEN << "Animal: constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "Animal: constructor" << COLOR_RESET << std::endl;
 }
 
-Animal::Animal(const Animal &animal) {
-	*this = animal;
-	cout << COLOR_GREEN << "Animal: copy constructor called" << COLOR_RESET << endl;
+Animal::Animal(const Animal &obj) {
+	this->setType(obj.getType());
+	std::cout << COLOR_GREEN << "Animal: copy constructor" << COLOR_RESET << std::endl;
 }
 
 Animal::~Animal() {
-	cout << COLOR_GREEN << "Animal: destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "Animal: destructor" << COLOR_RESET << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &animal) {
-	if (this != &animal) {
-		setType(animal.getType());
+Animal &Animal::operator=(const Animal &rhs) {
+	if (this != &rhs) {
+		this->setType(rhs.getType());
 	}
-	cout << COLOR_GREEN << "Animal: copy assignment operator called" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "Animal: copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 
-// setType() const; can't change
-void Animal::setType(const string &type) {
+void Animal::setType(const std::string &type) {
 	type_ = type;
 }
 
-const string &Animal::getType() const {
+const std::string &Animal::getType() const {
 	return type_;
 }
 
-// const Animal, Animal
 void Animal::makeSound() const {
-	cout << COLOR_GREEN << "[Animal] Yo who!! ٩(ˊᗜˋ*)و" << COLOR_RESET << endl;
+	std::cout << COLOR_GREEN << "[Animal] Yo who!! ٩(ˊᗜˋ*)و" << COLOR_RESET << std::endl;
 }

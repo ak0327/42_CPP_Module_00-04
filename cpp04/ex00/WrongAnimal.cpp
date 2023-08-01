@@ -9,23 +9,23 @@
 #define COLOR_RESET		"\x1b[0m"
 
 WrongAnimal::WrongAnimal() : type_("WrongAnimal") {
-	cout << COLOR_RED << "WrongAnimal: constructor called" << COLOR_RESET << endl;
+	cout << COLOR_RED << "WrongAnimal: constructor" << COLOR_RESET << endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &animal) {
-	*this = animal;
-	cout << COLOR_RED << "WrongAnimal: copy constructor called" << COLOR_RESET << endl;
+WrongAnimal::WrongAnimal(const WrongAnimal &obj) {
+	this->setType(obj.getType());
+	cout << COLOR_RED << "WrongAnimal: copy constructor" << COLOR_RESET << endl;
 }
 
 WrongAnimal::~WrongAnimal() {
-	cout << COLOR_RED << "WrongAnimal: destructor called" << COLOR_RESET << endl;
+	cout << COLOR_RED << "WrongAnimal: destructor" << COLOR_RESET << endl;
 }
 
-WrongAnimal &WrongAnimal::operator=(const WrongAnimal &animal) {
-	if (this != &animal) {
-		setType(animal.getType());
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs) {
+	if (this != &rhs) {
+		this->setType(rhs.getType());
 	}
-	cout << COLOR_RED << "WrongAnimal: copy assignment operator called" << COLOR_RESET << endl;
+	cout << COLOR_RED << "WrongAnimal: copy assignment operator" << COLOR_RESET << endl;
 	return *this;
 }
 

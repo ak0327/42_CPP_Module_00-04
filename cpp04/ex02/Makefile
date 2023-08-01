@@ -1,8 +1,11 @@
 NAME		= a.out
 
 CXX			= c++
-#CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -g -fsanitize=address
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+
+ifdef WITH_SANITIZE
+	CXXFLAGS += -g -fsanitize=address
+endif
 
 SRCS		= main.cpp \
 			  Animal.cpp \
@@ -34,9 +37,16 @@ fclean	: clean
 
 re		: fclean all
 
+sani	:
+	make all WITH_SANITIZE=1
+
 run		: re
 	./$(NAME)
 
-.PHONY	: all clean fclean re run
+srun	:
+	make sani
+	./$(NAME)
+
+.PHONY	: all clean fclean re run sani srun
 
 -include $(DEPS)

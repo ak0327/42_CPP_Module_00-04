@@ -9,7 +9,6 @@
 #define COLOR_RESET		"\x1b[0m"
 
 Brain::Brain() {
-	std::cout << COLOR_MAGENTA"Brain constructor called"COLOR_RESET << std::endl;
 	for (size_t i=0; i<IDEAS_SIZE; i++) {
 		if (i % 2 == 0) {
 			setIdeaElem(i, "Hello, this is neuron!");
@@ -17,28 +16,27 @@ Brain::Brain() {
 			setIdeaElem(i, "...??");
 		}
 	}
+	std::cout << COLOR_MAGENTA << "Brain constructor" << COLOR_RESET << std::endl;
 }
 
 Brain::Brain(const Brain &brain) {
-	std::cout << COLOR_MAGENTA"Brain copy constructor called"COLOR_RESET << std::endl;
 	for (size_t i=0; i<IDEAS_SIZE; i++) {
 		setIdeaElem(i, brain.getIdeaElem(i));
 	}
+	std::cout << COLOR_MAGENTA << "Brain copy constructor" << COLOR_RESET << std::endl;
 }
 
 Brain::~Brain() {
-	std::cout << COLOR_MAGENTA"Brain destructor called"COLOR_RESET << std::endl;
+	std::cout << COLOR_MAGENTA << "Brain destructor" << COLOR_RESET << std::endl;
 }
 
 Brain &Brain::operator=(const Brain &brain) {
-	std::cout << COLOR_MAGENTA"Brain copy assignment operator called"COLOR_RESET << std::endl;
 	if (this != &brain) {
-		Brain tmp = *this;
-		*this = Brain(brain);
-//		for (size_t i=0; i<IDEAS_SIZE; i++) {
-//			setIdeaElem(i, brain.getIdeaElem(i));
-//		}
+		for (size_t i=0; i<IDEAS_SIZE; i++) {
+			setIdeaElem(i, brain.getIdeaElem(i));
+		}
 	}
+	std::cout << COLOR_MAGENTA << "Brain copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 
@@ -52,8 +50,8 @@ void Brain::setIdeaElem(size_t idx_0_to_99, const std::string &elem) {
 	ideas_[idx_0_to_99] = elem;
 }
 
-void Brain::assertIdeasIdx(size_t idx) const{
+void Brain::assertIdeasIdx(size_t idx) const {
 	if (IDEAS_SIZE <= idx) {
-		throw std::out_of_range(COLOR_RED"[Error] index out of range, index:[0,100)"COLOR_RESET);
+		throw std::out_of_range(COLOR_RED "[Error] index out of range, index:[0,100)" COLOR_RESET);
 	}
 }

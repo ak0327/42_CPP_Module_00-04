@@ -8,29 +8,30 @@
 #define COLOR_CYAN		"\x1b[36m"
 #define COLOR_RESET		"\x1b[0m"
 
-Dog::Dog() : Animal(), brain_(new Brain()) {
-	std::cout << COLOR_BLUE << "Dog: constructor called" << COLOR_RESET << std::endl;
+Dog::Dog() : Animal(), brain_(new Brain())  {
 	setType("Dog");
-	// construction, Dog and Cat will create their Brain using new Brain();
+	std::cout << COLOR_YELLOW << "Dog: constructor" << COLOR_RESET << std::endl;
 }
 
-Dog::Dog(const Dog &dog) : Animal(), brain_(NULL)  {
-	std::cout << COLOR_BLUE << "Dog: copy constructor called" << COLOR_RESET << std::endl;
-	*this = dog;
+Dog::Dog(const Dog &obj) : Animal(obj), brain_(new Brain(obj.getBrain())) {
+	std::cout << COLOR_YELLOW << "Dog: copy constructor" << COLOR_RESET << std::endl;
 }
 
 Dog::~Dog() {
-	std::cout << COLOR_BLUE << "Dog: destructor called" << COLOR_RESET << std::endl;
-	// destruction, Dog and Cat will delete their Brain.
 	delete brain_;
+
+	std::cout << COLOR_YELLOW << "Dog: destructor" << COLOR_RESET << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &dog) {
-	if (this != &dog) {
+Dog &Dog::operator=(const Dog &rhs) {
+	if (this != &rhs) {
+		this->setType(rhs.getType());
+
 		Brain *tmp = brain_;
-		brain_ = new Brain(*dog.brain_);
+		brain_ = new Brain(rhs.getBrain());
 		delete tmp;
 	}
+	std::cout << COLOR_GREEN << "Dog: copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 

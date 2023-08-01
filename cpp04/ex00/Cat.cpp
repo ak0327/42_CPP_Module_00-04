@@ -10,25 +10,23 @@
 
 Cat::Cat() {
 	setType("Cat");
-	cout << COLOR_YELLOW << "Cat: constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << "Cat: constructor" << COLOR_RESET << std::endl;
 }
 
-Cat::Cat(const Cat &cat) {
-	*this = cat;
-	cout << COLOR_YELLOW << "Cat: copy constructor called" << COLOR_RESET << endl;
+Cat::Cat(const Cat &obj) : Animal(obj) {
+	std::cout << COLOR_YELLOW << "Cat: copy constructor" << COLOR_RESET << std::endl;
 }
 
 Cat::~Cat() {
-	cout << COLOR_YELLOW << "Cat: destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << "Cat: destructor" << COLOR_RESET << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &cat) {
-	if (this != &cat) {
-		setType(cat.getType());
-	}
+Cat &Cat::operator=(const Cat &rhs) {
+	Animal::operator=(rhs);
+	std::cout << COLOR_GREEN << "Cat: copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 
 void Cat::makeSound() const {
-	cout << COLOR_YELLOW << "[Cat] ₍ᐞ•༝•ᐞ₎◞ ̑̑ meows" << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << "[Cat] ₍ᐞ•༝•ᐞ₎◞ ̑̑ meows" << COLOR_RESET << std::endl;
 }

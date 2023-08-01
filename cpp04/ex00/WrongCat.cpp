@@ -10,22 +10,23 @@
 
 WrongCat::WrongCat() {
 	setType("WrongCat");
-	cout << COLOR_YELLOW << "WrongCat: constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << "WrongCat: constructor" << COLOR_RESET << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &cat) {
-	*this = cat;
-	cout << COLOR_YELLOW << "WrongCat: copy constructor called" << COLOR_RESET << endl;
+WrongCat::WrongCat(const WrongCat &obj) {
+	this->setType(obj.getType());
+	std::cout << COLOR_YELLOW << "WrongCat: copy constructor" << COLOR_RESET << std::endl;
 }
 
 WrongCat::~WrongCat() {
-	cout << COLOR_YELLOW << "WrongCat: destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_YELLOW << "WrongCat: destructor" << COLOR_RESET << std::endl;
 }
 
-WrongCat &WrongCat::operator=(const WrongCat &cat) {
-	if (this != &cat) {
-		setType(cat.getType());
+WrongCat &WrongCat::operator=(const WrongCat &rhs) {
+	if (this != &rhs) {
+		this->setType(rhs.getType());
 	}
+	std::cout << COLOR_GREEN << "WrongCat: copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 

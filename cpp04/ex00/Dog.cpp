@@ -10,25 +10,23 @@
 
 Dog::Dog() {
 	setType("Dog");
-	cout << COLOR_BLUE << "Dog: constructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << "Dog: constructor" << COLOR_RESET << std::endl;
 }
 
-Dog::Dog(const Dog &dog) {
-	*this = dog;
-	cout << COLOR_BLUE << "Dog: copy constructor called" << COLOR_RESET << endl;
+Dog::Dog(const Dog &obj) : Animal(obj) {
+	std::cout << COLOR_BLUE << "Dog: copy constructor" << COLOR_RESET << std::endl;
 }
 
 Dog::~Dog() {
-	cout << COLOR_BLUE << "Dog: destructor called" << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << "Dog: destructor" << COLOR_RESET << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &dog) {
-	if (this != &dog) {
-		setType(dog.getType());
-	}
+Dog &Dog::operator=(const Dog &rhs) {
+	Animal::operator=(rhs);
+	std::cout << COLOR_GREEN << "Dog: copy assignment operator" << COLOR_RESET << std::endl;
 	return *this;
 }
 
 void Dog::makeSound() const {
-	cout << COLOR_BLUE << "[Dog] ٩(∪*´•ω•) Bow wow" << COLOR_RESET << endl;
+	std::cout << COLOR_BLUE << "[Dog] ٩(∪*´•ω•) Bow wow" << COLOR_RESET << std::endl;
 }

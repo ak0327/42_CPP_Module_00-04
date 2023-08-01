@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-
 #include "Animal.hpp"
 #include "Brain.hpp"
 

@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-
 #include "Animal.hpp"
 #include "Brain.hpp"
 
@@ -11,6 +10,7 @@ public:
 	Cat();
 	Cat(const Cat &cat);
 	~Cat();
+
 	Cat &operator=(const Cat &cat);
 
 	void makeSound() const;

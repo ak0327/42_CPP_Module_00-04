@@ -4,12 +4,12 @@
 
 #define IDEAS_SIZE 100
 
-
 class Brain {
 public:
 	Brain();
 	Brain(const Brain &brain);
 	~Brain();
+
 	Brain &operator=(const Brain &brain);
 
 	const std::string &getIdeaElem(size_t idx_0_to_99) const;
